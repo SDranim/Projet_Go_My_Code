@@ -29,7 +29,7 @@ const userSchema = new mongoose.Schema({
   adress: String,
   birthday: String,
   photo: String,
-  
+
   role: {
     type: String,
     enum: ["user", "admin"],
