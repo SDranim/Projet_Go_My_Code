@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 const users = require("../Models/UserSchema");
 
-exports.isAuth = async (req, res, next) => {
+exports.isAuthUser = async (req, res, next) => {
   const token = req.headers["authorization"];
   try {
     if (!token) {

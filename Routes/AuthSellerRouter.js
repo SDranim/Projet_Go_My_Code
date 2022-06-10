@@ -3,6 +3,7 @@ const {
   registerSeller,
   loginSeller,
 } = require("../Controllers/AuthSellerController");
+const { isAuthSeller } = require("../Middleware/AuthSeller");
 const {
   registerValidationSeller,
   validation,
@@ -11,7 +12,7 @@ const {
 
 const AuthSellerRouter = express.Router();
 
-//register
+//register seller
 AuthSellerRouter.post(
   "/registerSeller",
   registerValidationSeller,
@@ -19,12 +20,17 @@ AuthSellerRouter.post(
   registerSeller
 );
 
-//login
+//login seller
 AuthSellerRouter.post(
   "/loginSeller",
   loginValidationSeller,
   validation,
   loginSeller
 );
+
+//get
+AuthSellerRouter.get("/current", isAuthSeller, (req, res, next) => {
+  res.send({ seller: req.seller });
+});
 
 module.exports = AuthSellerRouter;

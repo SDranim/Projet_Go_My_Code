@@ -6,12 +6,7 @@ const offerSchema = new mongoose.Schema({
     required: true,
   },
 
-  catégorie: {
-    type: String,
-    required: true,
-  },
-
-  discription: {
+  description: {
     type: String,
     required: true,
   },
@@ -23,8 +18,12 @@ const offerSchema = new mongoose.Schema({
 
   photo: {
     type: String,
-    required: true,
-  }
+  },
+
+  sellerId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "seller",
+  },
 });
 
 module.exports = mongoose.model("offer", offerSchema);

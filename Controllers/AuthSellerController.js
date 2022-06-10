@@ -1,9 +1,10 @@
-const sellers = require("../Models/SellerSchema")
+const sellers = require("../Models/SellerSchema");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 //register
-exports.registerSeller= async (req, res) => {
+//API /registerSeller
+exports.registerSeller = async (req, res) => {
   const { email, password } = req.body;
   try {
     const found = await sellers.findOne({ email });
@@ -18,7 +19,7 @@ exports.registerSeller= async (req, res) => {
     //jwt
     const payload = { id: newSeller._id };
     const token = jwt.sign(payload, process.env.secretOrKey);
-    
+
     await newSeller.save();
 
     res.status(200).send({ msg: "registred with success", newSeller, token });
@@ -28,6 +29,7 @@ exports.registerSeller= async (req, res) => {
 };
 
 //login
+//API /loginSeller
 exports.loginSeller = async (req, res) => {
   const { email, password } = req.body;
   try {

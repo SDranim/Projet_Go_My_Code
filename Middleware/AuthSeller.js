@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 const sellers = require("../Models/SellerSchema");
 
-exports.isAuth = async (req, res, next) => {
+exports.isAuthSeller = async (req, res, next) => {
   const token = req.headers["authorization"];
   try {
     if (!token) {

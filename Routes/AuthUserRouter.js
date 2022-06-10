@@ -3,6 +3,7 @@ const {
   registerUser,
   loginUser,
 } = require("../Controllers/AuthUserController");
+const { isAuthUser } = require("../Middleware/AuthUser");
 const {
   validation,
   registerValidationUser,
@@ -10,7 +11,7 @@ const {
 } = require("../Middleware/UserValidation");
 const AuthUserRouter = express.Router();
 
-//register
+//register user
 AuthUserRouter.post(
   "/registerUser",
   registerValidationUser,
@@ -18,7 +19,13 @@ AuthUserRouter.post(
   registerUser
 );
 
-//login
+//login user
 AuthUserRouter.post("/loginUser", loginValidationUser, validation, loginUser);
+
+//get
+AuthUserRouter.get("/current", isAuthUser, (req, res, next) => {
+  res.send({ user: req.user });
+});
+
 
 module.exports = AuthUserRouter;
