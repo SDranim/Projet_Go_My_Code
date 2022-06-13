@@ -37,3 +37,26 @@ exports.deleteOffer = async (req, res) => {
     res.status(400).send("could not delete");
   }
 };
+
+//get all offers
+//API /alloffers
+exports.getAllOffers = async(req,res)=>{
+  try {
+      const allOffers = await offers.find().populate('sellerId',"-password")
+      console.log(allOffers)
+      res.status(200).send({msg:"list of offers",allOffers})
+  } catch (error) {
+      res.status(400).send('could not get offers')        
+  }
+}
+
+//get my offers
+// API /myoffers
+exports.getMyOffers = async(req,res)=>{
+  try {
+      const myOffers = await offers.find({sellerId: req.seller.id})
+      res.status(200).send({msg:"list of offers",myOffers})
+  } catch (error) {
+      res.status(400).send('could not get offers')        
+  }
+}

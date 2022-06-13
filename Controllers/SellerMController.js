@@ -1,5 +1,6 @@
 const sellers = require('../Models/SellerSchema')
-
+const contacts = require('../Models/ContactSellerSchema')
+const bcrypt = require('bcrypt')
 //get profil seller
 //API : /profilSeller/:id
 exports.getsellerProfil=async(req,res)=>{
@@ -35,3 +36,40 @@ exports.updateprofilSeller=async(req,res)=>{
         
     }
 }
+//update password 
+//API /updatePasswordSeller
+exports.updatePassSeller=async(req,res)=>{
+    
+  try {
+      const salt = 10;
+      const password = bcrypt.hashSync(req.body.password,salt)
+      const updatedPass= await sellers.findByIdAndUpdate(req.seller._id, {password:password},{new:true})
+
+  res.status(200).send({msg:"password updated successfully",updatedPass})        
+  } catch (error) {
+      res.status(400).send({msg:"password not update"})        
+  }
+}
+
+//get messages 
+//API /myMsgs
+exports.myMsgs = async (req, res) => {
+    try {
+      const msgs = await contacts.find();
+      res.status(200).send({ msg: "list of messages", msgs });
+    } catch (error) {
+      res.status(400).send("could not get messages");
+    }
+  };
+
+//delete message 
+//API /deletetheMsg/:id
+exports.deletetheMsg = async (req, res) => {
+    try {
+      await contacts.findByIdAndDelete(req.params.id);
+      res.status(200).send({ msg: "Message deleted" });
+    } catch (error) {
+      res.status(400).send("could not delete message");
+    }
+  };
+  

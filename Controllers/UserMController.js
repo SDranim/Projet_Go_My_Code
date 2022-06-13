@@ -1,4 +1,6 @@
 const users = require("../Models/UserSchema");
+const contacts = require("../Models/ContactSellerSchema");
+const bcrypt = require('bcrypt')
 
 //get profil
 //API : /myprofilUser/:id
@@ -28,7 +30,7 @@ exports.updateprofil = async (req, res) => {
   try {
     const updated = await users.findByIdAndUpdate(
       req.user._id,
-      { $set: req.body },
+      { $set: {...req.body,photo:req.file.filename} },
       { new: true }
     );
 
@@ -37,3 +39,30 @@ exports.updateprofil = async (req, res) => {
     res.status(400).send({ msg: "could not update" });
   }
 };
+
+//update password
+//API /updatePasswordUser
+exports.updatePassUser=async(req,res)=>{
+    
+  try {
+      const salt = 10;
+      const password = bcrypt.hashSync(req.body.password,salt)
+      const updatedPass= await users.findByIdAndUpdate(req.user._id, {password:password},{new:true})
+
+  res.status(200).send({msg:"password updated successfully",updatedPass})        
+  } catch (error) {
+      res.status(400).send({msg:"password not update"})        
+  }
+}
+
+// method POST
+// API : /contactSeller
+exports.contactSeller= async (req,res)=>{
+    try {
+        const newMsg = new contacts(req.body);
+        await newMsg.save();
+        res.status(200).send({msg:"Message sent successfully",newMsg})
+    } catch (error) {
+        res.status(400).send('could not send the message')
+    }
+}

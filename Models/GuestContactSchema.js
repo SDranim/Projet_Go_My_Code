@@ -1,11 +1,11 @@
 const mongoose = require ('mongoose');
 
-const S_UcontactSchema = new mongoose.Schema({
+const guestContactSchema = new mongoose.Schema({
     first_name: {
         type:String,
         required : true,},
         
-    Last_name:{
+    last_name:{
         type:String,
         required : true,
     },
@@ -20,11 +20,11 @@ const S_UcontactSchema = new mongoose.Schema({
         required : true, 
     },
 
-    massage:{
+    message:{
         type: String,
         required : true, 
     },
    
 })
 
-module.exports = mongoose.model("S_Ucontact",S_UcontactSchema) ;
+module.exports = mongoose.model("guestContact",guestContactSchema) ;
