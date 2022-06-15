@@ -27,5 +27,4 @@ AuthUserRouter.get("/current", isAuthUser, (req, res, next) => {
   res.send({ user: req.user });
 });
 
-
 module.exports = AuthUserRouter;

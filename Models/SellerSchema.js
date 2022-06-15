@@ -20,7 +20,7 @@ const sellerSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  
+
   adress: String,
   discription: String,
   photo: String,

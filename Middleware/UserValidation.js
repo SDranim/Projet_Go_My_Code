@@ -5,10 +5,7 @@ exports.registerValidationUser = [
     "first_name",
     "Empty firstName ! please enter your personal name"
   ).notEmpty(),
-  body(
-    "last_name",
-    "Empty lastName ! please enter your last name"
-  ).notEmpty(),
+  body("last_name", "Empty lastName ! please enter your last name").notEmpty(),
   body("email", "please enter a correct email").isEmail(),
   body("phone_number", "Your phone number should be 8 numbers").isLength({
     min: 8,

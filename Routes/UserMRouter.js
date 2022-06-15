@@ -20,18 +20,23 @@ UserMRouter.get("/myprofilUser/:id", isAuthUser, getMyProfil);
 UserMRouter.delete("/deleteprofilUser/:id", isAuthUser, deleteProfil);
 
 //update profil user
-UserMRouter.put("/updateprofilUser", isAuthUser,upload.single('photo'), updateprofil);
+UserMRouter.put(
+  "/updateprofilUser",
+  isAuthUser,
+  upload.single("photo"),
+  updateprofil
+);
 
 //update password
-UserMRouter.put("/updatePasswordUser",isAuthUser,updatePassUser)
+UserMRouter.put("/updatePasswordUser", isAuthUser, updatePassUser);
 
 //get all offers
-UserMRouter.get("/alloffers",getAllOffers)
+UserMRouter.get("/alloffers", getAllOffers);
 
 //find sellers
-UserMRouter.get('/allSellers',getSellers)
+UserMRouter.get("/allSellers", getSellers);
 
 //contact seller
-UserMRouter.post("/contactSeller",isAuthUser,contactSeller)
+UserMRouter.post("/contactSeller", isAuthUser, contactSeller);
 
 module.exports = UserMRouter;

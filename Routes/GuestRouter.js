@@ -1,10 +1,9 @@
-const express = require('express');
-const { Contact } = require('../Controllers/GuestContactController');
-const guestRouter = express.Router()
+const express = require("express");
+const { Contact } = require("../Controllers/GuestContactController");
+const guestRouter = express.Router();
 
-
-//Contact Us 
+//Contact Us
 //method post
-guestRouter.post('/contactUs',Contact)
+guestRouter.post("/contactUs", Contact);
 
 module.exports = guestRouter;

@@ -1,5 +1,11 @@
 const express = require("express");
-const { addOffer, updateOffer, deleteOffer, getAllOffers, getMyOffers } = require("../Controllers/OfferMController");
+const {
+  addOffer,
+  updateOffer,
+  deleteOffer,
+  getAllOffers,
+  getMyOffers,
+} = require("../Controllers/OfferMController");
 const {
   getsellerProfil,
   deleteProfilSeller,
@@ -15,34 +21,37 @@ const SellerMRouter = express.Router();
 SellerMRouter.get("/profilSeller/:id", isAuthSeller, getsellerProfil);
 
 //delete profil seller
-SellerMRouter.delete("/deleteprofilSeller/:id", isAuthSeller, deleteProfilSeller);
+SellerMRouter.delete(
+  "/deleteprofilSeller/:id",
+  isAuthSeller,
+  deleteProfilSeller
+);
 
 //update profil seller
 SellerMRouter.put("/updateprofilSeller/:id", isAuthSeller, updateprofilSeller);
 
 //update password
-SellerMRouter.put("/updatePasswordSeller",isAuthSeller,updatePassSeller)
+SellerMRouter.put("/updatePasswordSeller", isAuthSeller, updatePassSeller);
 
 //add offer
 SellerMRouter.post("/addOffer", isAuthSeller, addOffer);
 
-//update offer 
-SellerMRouter.put("/updateOffer/:id",isAuthSeller,updateOffer);
+//update offer
+SellerMRouter.put("/updateOffer/:id", isAuthSeller, updateOffer);
 
-//delete offer 
-SellerMRouter.delete("/deleteOffer/:id",isAuthSeller,deleteOffer);
+//delete offer
+SellerMRouter.delete("/deleteOffer/:id", isAuthSeller, deleteOffer);
 
 //get all offers
-SellerMRouter.get("/allOffers",getAllOffers)
+SellerMRouter.get("/allOffers", getAllOffers);
 
-//get my offers 
-SellerMRouter.get("/myOffers",isAuthSeller,getMyOffers)
+//get my offers
+SellerMRouter.get("/myOffers", isAuthSeller, getMyOffers);
 
 //get all messages
-SellerMRouter.get("/myMsgs",isAuthSeller,myMsgs)
+SellerMRouter.get("/myMsgs", isAuthSeller, myMsgs);
 
 //delete message
-SellerMRouter.delete("/deletetheMsg/:id",isAuthSeller,deletetheMsg)
-
+SellerMRouter.delete("/deletetheMsg/:id", isAuthSeller, deletetheMsg);
 
 module.exports = SellerMRouter;
