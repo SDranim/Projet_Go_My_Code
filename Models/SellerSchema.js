@@ -16,10 +16,6 @@ const sellerSchema = new mongoose.Schema({
     required: true,
   },
 
-  phone_number: {
-    type: String,
-    required: true,
-  },
 
   adress: String,
   discription: String,

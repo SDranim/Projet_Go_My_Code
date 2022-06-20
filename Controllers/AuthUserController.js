@@ -33,12 +33,15 @@ exports.registerUser = async (req, res) => {
 //API /loginUser
 exports.loginUser = async (req, res) => {
   const { email, password } = req.body;
+  console.log(req.body)
   try {
     const foundUser = await users.findOne({ email });
+    console.log(foundUser)
     if (!foundUser) {
       return res.status(400).send("bad credentials");
     }
-    const match = await bcrypt.compareSync(password, foundUser.password);
+    const match =  bcrypt.compareSync(password, foundUser.password);
+  
     if (!match) {
       return res.status(400).send("bad credentials");
     }
