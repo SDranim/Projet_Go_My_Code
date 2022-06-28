@@ -1,4 +1,4 @@
-import { ALL_OFFERS, MY_OFFERS } from "../ActionTypes"
+import { ALL_OFFERS, MY_OFFERS, SELLER_OFFERS } from "../ActionTypes"
 
 const initialState = {
 myOffers:[],
@@ -12,6 +12,8 @@ const offerReducer =(state = initialState, { type, payload }) => {
 
   case MY_OFFERS:
     return { ...state, myOffers:payload.myOffers,load:false } 
+case SELLER_OFFERS:
+    return { ...state, myOffers:payload.sellerOffers,load:false } 
 
   default:
     return state

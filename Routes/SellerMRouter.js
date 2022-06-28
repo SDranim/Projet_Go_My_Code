@@ -5,6 +5,7 @@ const {
   deleteOffer,
   getAllOffers,
   getMyOffers,
+  getSellerOffers,
 } = require("../Controllers/OfferMController");
 const {
   getsellerProfil,
@@ -15,7 +16,8 @@ const {
   updatePassSeller,
   updatePhotoSeller,
 } = require("../Controllers/SellerMController");
-const { isAuth, isAuthSeller } = require("../Middleware/AuthSeller");
+const {  isAuthSeller } = require("../Middleware/AuthSeller"); 
+const {isAuthUser}=require('../Middleware/AuthUser')
 const { upload } = require("../Middleware/Upload");
 const SellerMRouter = express.Router();
 
@@ -30,7 +32,7 @@ SellerMRouter.put("/updateprofilSeller", isAuthSeller, updateprofilSeller);
 SellerMRouter.put("/updatePasswordSeller", isAuthSeller, updatePassSeller);
 
 //add offer
-SellerMRouter.post("/addOffer", isAuthSeller, addOffer);
+SellerMRouter.post("/addOffer", isAuthSeller,upload.single('offreImage'), addOffer);
 
 //update offer
 SellerMRouter.put("/updateOffer/:id", isAuthSeller, updateOffer);
@@ -43,6 +45,8 @@ SellerMRouter.get("/myOffers", isAuthSeller, getMyOffers);
 
 //get all messages
 SellerMRouter.get("/myMsgs", isAuthSeller, myMsgs);
+//get seller offers
+SellerMRouter.get("/selleroffers/:id", isAuthUser, getSellerOffers);
 
 //update photo 
 SellerMRouter.put("/updatePhotoSeller",isAuthSeller,upload.single('imageSeller'),updatePhotoSeller)

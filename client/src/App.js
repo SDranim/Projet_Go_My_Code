@@ -24,7 +24,7 @@ import AdminProfile from "./Components/Admin/AdminProfile"
 import OfferList from "./Components/Seller/Offers/OfferList"
 import Offerdetails from "./Components/Guest/Offerdetails"
 import SellersList from "./Components/Guest/SellersList"
-
+import GetProfileSeller from "./Components/User/GetProfileSeller"
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -41,6 +41,7 @@ function App() {
       <Routes>
         {/* guest routes */}
         <Route path="/" element={<Home />} />
+        <Route path="/GetProfileSeller" element={<GetProfileSeller />} />
         <Route path="/signUp" element={<SignUp />} />
         <Route path="/signIn" element={<SignIn />} />
         <Route path="/contact" element={<ContactUs />} />
@@ -53,6 +54,7 @@ function App() {
         <Route path="/userUpdate" element={<PrivateRoute><UpdateProfile /></PrivateRoute>} />
         <Route path="/editPassword" element={<PrivateRoute><Editpassword /></PrivateRoute>} />
         <Route path="/editPhoto" element={<PrivateRoute><ChangePhoto /></PrivateRoute>} />
+
 
         {/* seller routes */}
         <Route path="/profileSeller" element={<PrivateRoute><ProfileSeller /></PrivateRoute>}/>

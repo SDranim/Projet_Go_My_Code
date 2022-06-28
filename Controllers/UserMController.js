@@ -1,6 +1,7 @@
 const users = require("../Models/UserSchema");
 const contacts = require("../Models/ContactSellerSchema");
 const bcrypt = require("bcrypt");
+const sellers=require("../Models/SellerSchema")
 
 // //get profil
 // //API : /myprofilUser/:id
@@ -17,8 +18,8 @@ const bcrypt = require("bcrypt");
 //API : /profilSeller/:id
 exports.getsellerProfil = async (req, res) => {
   try {
-    const myinfo = await sellers.findById(req.params.id);
-    res.status(200).send({ msg: "My info : ", myinfo });
+    const sellerInfo = await sellers.findById(req.params.id);
+    res.status(200).send({ msg: "My info : ",sellerInfo });
   } catch (error) {
     res.status(400).send("could not get user info");
   }
@@ -67,17 +68,7 @@ exports.updatePassUser = async (req, res) => {
   }
 };
 
-// method POST
-// API : /contactSeller
-exports.contactSeller = async (req, res) => {
-  try {
-    const newMsg = new contacts(req.body);
-    await newMsg.save();
-    res.status(200).send({ msg: "Message sent successfully", newMsg });
-  } catch (error) {
-    res.status(400).send("could not send the message");
-  }
-};
+
 //method Update
 // API : /updatePhotoUser
 exports.updatePhotoUser=async(req,res)=>{
@@ -89,3 +80,15 @@ exports.updatePhotoUser=async(req,res)=>{
       res.status(500).send({msg:"could not update photo"})        
   }
 }
+
+// method POST
+// API : /contactSeller
+exports.contactSeller = async (req, res) => {
+  try {
+    const newContactS = new contacts({...req.body,sellerId:req.params.id,userId:req.use._id});
+    await newContactS.save();
+    res.status(200).send({ msg: "Message sent successfully", newContactS });
+  } catch (error) {
+    res.status(400).send("could not send the message");
+  }
+};

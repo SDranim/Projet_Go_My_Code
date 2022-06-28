@@ -3,13 +3,9 @@ import { ALL_OFFERS, ALL_SELLERS } from "../ActionTypes"
 
 //get all offers 
 export const allOffers=()=>async(dispatch)=>{
-    const config={
-        headers:{
-            authorization:localStorage.getItem('token')
-        }
-    } 
+    
     try {
-        const res=await axios.get("/api/Guest/allOffers",config)
+        const res=await axios.get("/api/Guest/allOffers")
         dispatch({type:ALL_OFFERS,payload:res.data})
         
     } catch (error) {
@@ -19,13 +15,9 @@ export const allOffers=()=>async(dispatch)=>{
 
 //get all sellers 
 export const allSellers=()=>async(dispatch)=>{
-    const config={
-        headers:{
-            authorization:localStorage.getItem('token')
-        }
-    } 
+    
     try {
-        const res=await axios.get("/api/Guest//allSellers",config)
+        const res=await axios.get("/api/Guest/allSellers")
         dispatch({type:ALL_SELLERS,payload:res.data})
         
     } catch (error) {
@@ -35,13 +27,9 @@ export const allSellers=()=>async(dispatch)=>{
 
 //contact us 
 export const sendMsg=(newMsg)=>async(dispatch)=>{
-    const config={
-        headers:{
-            authorization:localStorage.getItem('token')
-        }
-    } 
+    
     try {
-        await axios.post("/api/Guest/contactUs",newMsg,config)
+        await axios.post("/api/Guest/contactUs",newMsg)
     } catch (error) {
         console.log(error)
     }

@@ -1,6 +1,15 @@
 import React from 'react'
+import {useDispatch} from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { getSellerprofile } from '../../JS/Actions/UserActions'
 // https://i.imgur.com/7D7I6dI.png
 function SellersCard({seller}) {
+const dispatch=useDispatch()
+const navigate=useNavigate()
+const handleGetSeller=()=>{
+dispatch(getSellerprofile(seller._id))
+navigate('/getprofileSeller')
+}
 
   return (
     <div className='container'>
@@ -13,10 +22,10 @@ function SellersCard({seller}) {
             <img className="card__thumb" src={seller&&seller.photo ? `Image/${seller.photo}`: "https://bootdey.com/img/Content/avatar/avatar7.png"}  alt="" />
             <div className="card__header-text">
               <h3 className="card__title">{seller.name}</h3>            
-              <span className="card__status">1 hour ago</span>
             </div>
           </div>
-          <p className="card__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, blanditiis?</p>
+          <p className="card__description">{seller.slogan}</p>
+          <button onClick={handleGetSeller}>Profile</button>
         </div>
       </a>      
   </div>

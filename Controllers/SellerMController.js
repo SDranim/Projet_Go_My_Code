@@ -8,6 +8,7 @@ const bcrypt = require("bcrypt");
 exports.deleteProfilSeller = async (req, res) => {
   try {
     await sellers.findByIdAndDelete(req.user._id);
+    await offers.deleteMany({sellerId:req.seller._id})
     res.status(200).send({ msg: "account deleted" });
   } catch (error) {
     res.status(400).send({ msg: "could not delete" });

@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-
+const {ObjectId} = mongoose.Schema.Types
 const contactSellerSchema = new mongoose.Schema({
   first_name: {
     type: String,
@@ -25,6 +25,20 @@ const contactSellerSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+
+
+  sellerId: {
+    type: ObjectId, 
+   ref: "seller",
+   
+ },
+ 
+ userId: {
+  type: ObjectId, 
+ ref: "user",
+ 
+},
+
 });
 
 module.exports = mongoose.model("contactSeller", contactSellerSchema);

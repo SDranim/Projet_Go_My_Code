@@ -12,3 +12,5 @@ export const ALL_OFFERS = 'ALL_OFFERS'
 
 //guest
 export const ALL_SELLERS='ALL_SELLERS'
+export const GET_SELLER='GET_SELLER'
+export const SELLER_OFFERS='SELLER_OFFERS'

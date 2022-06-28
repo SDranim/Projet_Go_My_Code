@@ -16,7 +16,7 @@ const UserMRouter = express.Router();
 // UserMRouter.get("/myprofilUser", isAuthUser, getMyProfil);
 
 //get profil seller
-UserMRouter.get("/profilseller", isAuthUser, getsellerProfil);
+UserMRouter.get("/profilseller/:id", isAuthUser, getsellerProfil);
 
 //delete profil user
 UserMRouter.delete("/deleteprofilUser", isAuthUser, deleteProfil);

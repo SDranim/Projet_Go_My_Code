@@ -9,6 +9,7 @@ exports.isAuthSeller = async (req, res, next) => {
     }
     const decoded = jwt.verify(token, process.env.secretOrKey);
     const seller = await sellers.findById(decoded.id)
+    console.log(seller)
     req.user =seller
     next();
   } catch (error) {
