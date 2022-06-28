@@ -1,58 +1,50 @@
 import axios from "axios";
-import { LOADING, FAIL, REGISTER, LOGIN, GET_CURRENT, LOGOUT } from "../ActionTypes";
+import { FAIL } from "../ActionTypes"
+import { getCurrentUser, logout } from "./AuthUserActions";
+//update profile 
+export const updateProfilUser =(user)=>async(dispatch)=>{
+    const config={
+        headers:{
+            authorization:localStorage.getItem('token')
+        }
+    }
+    try {
+        const res = await axios.put('/api/User/updateprofilUser',user,config)
+        console.log(res.data)    
+        dispatch(getCurrentUser())
+    } catch (error) {
+        dispatch({type:FAIL})
+    }
+    } 
 
-//register user
-export const registerUser = (newUser, navigate) => async (dispatch) => {
-  dispatch({ type: LOADING });
-  try {
-    const res = await axios.post("/api/authUser/registerUser", newUser);
-    const { _id, first_name, last_name, email, password } = res.data.newUser;
-    dispatch({
-      type: REGISTER,
-      payload: {
-        user: { _id, first_name, last_name, email, password, role: "user" },
-        token: res.data.token,
-      },
-    });
-    navigate("/profileUser");
-  } catch (error) {
-    dispatch({ type: FAIL, payload: error.response.data });
-  }
-};
+//delete profile
+export const deleteAccountUser =()=>async(dispatch)=>{
+    const config={
+        headers:{
+            authorization:localStorage.getItem('token')
+        }
+    }
+    try {
+        await axios.delete('/api/User/deleteprofilUser',config)           
+        dispatch(logout())
+        
+    } catch (error) {
+        dispatch({type:FAIL})
+    }
+    } 
 
-//login user
-export const loginUser = (user, navigate) => async (dispatch) => {
-  dispatch({ type: LOADING });
-  try {
-    const res = await axios.post("/api/authUser/loginUser",user);
-    const { _id, first_name, last_name, email, password } = res.data.foundUser;
-    dispatch({
-      type: LOGIN,
-      payload: {
-        user: {_id,email, password,first_name,last_name, role: "user" },
-        token: res.data.token,
-      },
-    });
-    navigate("/profileUser");
-  } catch (error) {
-    dispatch({ type: FAIL, payload: error.response.data });
-  }
-};
-//get_current
-export const getCurrent =()=>async(dispatch)=>{
-  const config={
-      headers:{
-          authorization:localStorage.getItem('token')
-      }
-  }
-  try {
-      const res = await axios.get('/api/authUser/current',config)
-      console.log(res.data)
-  
-      dispatch({type:GET_CURRENT, payload: res.data})
-  } catch (error) {
-      dispatch({type:FAIL})
-  }
-  } 
-  //logout
-export const logout =()=>({type:LOGOUT});
+//change password
+  //Edit Password User
+  export const editPasswordUser =( updatedPass)=>async(dispatch)=>{
+    const config={
+        headers:{
+            authorization:localStorage.getItem('token')
+        }
+    }
+    try {
+        await axios.put('/api/User/updatePasswordUser',updatedPass,config)               
+        dispatch(logout())
+    } catch (error) {
+        dispatch({type:FAIL})
+    }
+    } 

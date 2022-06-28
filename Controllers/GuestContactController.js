@@ -11,3 +11,4 @@ exports.Contact = async (req, res) => {
     res.status(400).send("could not send the message");
   }
 };
+

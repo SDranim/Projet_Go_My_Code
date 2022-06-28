@@ -20,8 +20,8 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-
-  adress: String,
+  phone: String,
+  address: String,
   birthday: String,
   photo: String,
 

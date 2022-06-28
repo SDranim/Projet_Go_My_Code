@@ -3,8 +3,8 @@ import { useState } from "react";
 import Select from "react-select";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { registerUser } from "../JS/Actions/UserActions";
-import { registerSeller } from "../JS/Actions/SellerActions";
+import { registerSeller } from "../../JS/Actions/AuthSellerActions";
+import { registerUser } from "../../JS/Actions/AuthUserActions";
 
 function SignUp() {
   //seller

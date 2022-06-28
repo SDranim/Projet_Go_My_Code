@@ -23,7 +23,7 @@ AuthUserRouter.post(
 AuthUserRouter.post("/loginUser", loginValidationUser, validation, loginUser);
 
 //get
-AuthUserRouter.get("/current", isAuthUser, (req, res, next) => {
+AuthUserRouter.get("/currentUser", isAuthUser, (req, res, next) => {
   res.send({ user: req.user });
 });
 

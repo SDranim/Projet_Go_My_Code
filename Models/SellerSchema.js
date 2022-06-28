@@ -16,10 +16,12 @@ const sellerSchema = new mongoose.Schema({
     required: true,
   },
 
-
-  adress: String,
+  phone:String,
+  address: String,
   discription: String,
   photo: String,
+  slogan:String,
+
 });
 
 module.exports = mongoose.model("seller", sellerSchema);

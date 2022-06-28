@@ -2,11 +2,8 @@ import React, { useState } from "react";
 import Select from "react-select";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { loginUser } from "../JS/Actions/UserActions";
-import { loginSeller } from "../JS/Actions/SellerActions";
-
-
-
+import { loginUser } from "../../JS/Actions/AuthUserActions";
+import { loginSeller } from "../../JS/Actions/AuthSellerActions";
 
 function SignIn() {
    //seller
@@ -26,10 +23,10 @@ function SignIn() {
        dispatch(  loginSeller(
         { email: email_seller, password: password_seller },
         navigate
-      ));
-     } else {
-       dispatch(loginUser({email, password }, navigate))
-       ;
+      ));}
+      else {
+       dispatch(loginUser({email, password }))
+ navigate('/')
      }
    };
   const [userRole, setUserRole] = useState("user");

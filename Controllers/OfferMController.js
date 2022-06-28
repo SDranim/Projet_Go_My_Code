@@ -2,13 +2,13 @@ const offers = require("../Models/OfferSchema");
 
 //add offer
 //API /addOffer
-exports.addOffer = async (req, res) => {
+exports.addOffer = async (req, res) => { 
   try {
-    const newOffer = new offers({ ...req.body, sellerId: req.seller.id });
+    const newOffer = new offers({...req.body , sellerId:req.user._id});
     await newOffer.save();
     res.status(200).send({ msg: "offer added succesfully", newOffer });
   } catch (error) {
-    res.status(400).send("could not add");
+    res.status(500).send("could not add");
   }
 };
 
@@ -32,6 +32,7 @@ exports.updateOffer = async (req, res) => {
 exports.deleteOffer = async (req, res) => {
   try {
     await offers.findByIdAndDelete(req.params.id);
+    console.log(req.params.id)
     res.status(200).send({ msg: "offer deleted " });
   } catch (error) {
     res.status(400).send("could not delete");
@@ -43,7 +44,6 @@ exports.deleteOffer = async (req, res) => {
 exports.getAllOffers = async (req, res) => {
   try {
     const allOffers = await offers.find().populate("sellerId", "-password");
-    console.log(allOffers);
     res.status(200).send({ msg: "list of offers", allOffers });
   } catch (error) {
     res.status(400).send("could not get offers");
@@ -54,7 +54,7 @@ exports.getAllOffers = async (req, res) => {
 // API /myoffers
 exports.getMyOffers = async (req, res) => {
   try {
-    const myOffers = await offers.find({ sellerId: req.seller.id });
+    const myOffers = await offers.find({ sellerId: req.user.id });
     res.status(200).send({ msg: "list of offers", myOffers });
   } catch (error) {
     res.status(400).send("could not get offers");

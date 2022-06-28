@@ -1,40 +1,34 @@
 const express = require("express");
-const { getSellers } = require("../Controllers/AdminController");
-const { Contact } = require("../Controllers/GuestContactController");
-const { getAllOffers } = require("../Controllers/OfferMController");
+const { getsellerProfil } = require("../Controllers/UserMController");
 const {
   getMyProfil,
   deleteProfil,
   updateprofil,
   contactSeller,
   updatePassUser,
+  updatePhotoUser,
 } = require("../Controllers/UserMController");
 const { isAuthUser } = require("../Middleware/AuthUser");
 const { upload } = require("../Middleware/Upload");
 const UserMRouter = express.Router();
 
-//get profil user
-UserMRouter.get("/myprofilUser/:id", isAuthUser, getMyProfil);
+// //get profil user
+// UserMRouter.get("/myprofilUser", isAuthUser, getMyProfil);
+
+//get profil seller
+UserMRouter.get("/profilseller", isAuthUser, getsellerProfil);
 
 //delete profil user
-UserMRouter.delete("/deleteprofilUser/:id", isAuthUser, deleteProfil);
+UserMRouter.delete("/deleteprofilUser", isAuthUser, deleteProfil);
 
 //update profil user
-UserMRouter.put(
-  "/updateprofilUser",
-  isAuthUser,
-  upload.single("photo"),
-  updateprofil
-);
+UserMRouter.put("/updateprofilUser", isAuthUser, updateprofil);
 
 //update password
 UserMRouter.put("/updatePasswordUser", isAuthUser, updatePassUser);
 
-//get all offers
-UserMRouter.get("/alloffers", getAllOffers);
-
-//find sellers
-UserMRouter.get("/allSellers", getSellers);
+//update photo
+UserMRouter.put("/updatePhotoUser", isAuthUser, upload.single("imageUser"), updatePhotoUser);
 
 //contact seller
 UserMRouter.post("/contactSeller", isAuthUser, contactSeller);

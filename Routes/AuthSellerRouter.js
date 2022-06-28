@@ -29,8 +29,8 @@ AuthSellerRouter.post(
 );
 
 //get
-AuthSellerRouter.get("/current", isAuthSeller, (req, res, next) => {
-  res.send({ seller: req.seller });
+AuthSellerRouter.get("/currentSeller", isAuthSeller, (req, res) => {
+  res.send({ user:req.user});
 });
 
 module.exports = AuthSellerRouter;

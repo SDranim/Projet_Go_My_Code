@@ -2,11 +2,22 @@ const users = require("../Models/UserSchema");
 const contacts = require("../Models/ContactSellerSchema");
 const bcrypt = require("bcrypt");
 
-//get profil
-//API : /myprofilUser/:id
-exports.getMyProfil = async (req, res) => {
+// //get profil
+// //API : /myprofilUser/:id
+// exports.getMyProfil = async (req, res) => {
+//   try {
+//     const myinfo = await users.findById(req.params.id);
+//     res.status(200).send({ msg: "My info : ", myinfo });
+//   } catch (error) {
+//     res.status(400).send("could not get user info");
+//   }
+// };
+
+//get profil seller
+//API : /profilSeller/:id
+exports.getsellerProfil = async (req, res) => {
   try {
-    const myinfo = await users.findById(req.params.id);
+    const myinfo = await sellers.findById(req.params.id);
     res.status(200).send({ msg: "My info : ", myinfo });
   } catch (error) {
     res.status(400).send("could not get user info");
@@ -29,9 +40,7 @@ exports.deleteProfil = async (req, res) => {
 exports.updateprofil = async (req, res) => {
   try {
     const updated = await users.findByIdAndUpdate(
-      req.user._id,
-      { $set: { ...req.body, photo: req.file.filename } },
-      { new: true }
+      req.user._id, {$set:{...req.body}} ,{new:true}
     );
 
     res.status(200).send({ msg: "account updated successfully", updated });
@@ -69,3 +78,14 @@ exports.contactSeller = async (req, res) => {
     res.status(400).send("could not send the message");
   }
 };
+//method Update
+// API : /updatePhotoUser
+exports.updatePhotoUser=async(req,res)=>{
+    
+  try {
+      const updated= await users.findByIdAndUpdate(req.user._id, {$set:{...req.body,photo:req.file.filename}} ,{new:true})
+  res.status(200).send({msg:"photo updated successfully",updated})        
+  } catch (error) {
+      res.status(500).send({msg:"could not update photo"})        
+  }
+}

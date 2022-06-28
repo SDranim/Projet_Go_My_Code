@@ -1,22 +1,13 @@
 const sellers = require("../Models/SellerSchema");
 const contacts = require("../Models/ContactSellerSchema");
 const bcrypt = require("bcrypt");
-//get profil seller
-//API : /profilSeller/:id
-exports.getsellerProfil = async (req, res) => {
-  try {
-    const myinfo = await sellers.findById(req.params.id);
-    res.status(200).send({ msg: "My info : ", myinfo });
-  } catch (error) {
-    res.status(400).send("could not get user info");
-  }
-};
+
 
 //delete profil seller
 //API : /deleteprofilSeller/:id
 exports.deleteProfilSeller = async (req, res) => {
   try {
-    await sellers.findByIdAndDelete(req.seller._id);
+    await sellers.findByIdAndDelete(req.user._id);
     res.status(200).send({ msg: "account deleted" });
   } catch (error) {
     res.status(400).send({ msg: "could not delete" });
@@ -28,7 +19,7 @@ exports.deleteProfilSeller = async (req, res) => {
 exports.updateprofilSeller = async (req, res) => {
   try {
     const updated = await sellers.findByIdAndUpdate(
-      req.seller._id,
+      req.user._id,
       { $set: req.body },
       { new: true }
     );
@@ -45,7 +36,7 @@ exports.updatePassSeller = async (req, res) => {
     const salt = 10;
     const password = bcrypt.hashSync(req.body.password, salt);
     const updatedPass = await sellers.findByIdAndUpdate(
-      req.seller._id,
+      req.user._id,
       { password: password },
       { new: true }
     );
@@ -55,6 +46,19 @@ exports.updatePassSeller = async (req, res) => {
     res.status(400).send({ msg: "password not update" });
   }
 };
+
+
+//method Update
+// API : /updatePhotoUser
+exports.updatePhotoSeller=async(req,res)=>{
+    
+  try {
+      const updated= await sellers.findByIdAndUpdate(req.user._id, {$set:{...req.body,photo:req.file.filename}} ,{new:true})
+  res.status(200).send({msg:"photo updated successfully",updated})        
+  } catch (error) {
+      res.status(500).send({msg:"could not update photo"})        
+  }
+}
 
 //get messages
 //API /myMsgs

@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 
+const {ObjectId} = mongoose.Schema.Types
 const offerSchema = new mongoose.Schema({
   title: {
     type: String,
@@ -8,10 +9,13 @@ const offerSchema = new mongoose.Schema({
 
   description: {
     type: String,
-    required: true,
   },
 
   date: {
+    type: String,
+  },
+
+  category: {
     type: String,
     required: true,
   },
@@ -21,8 +25,9 @@ const offerSchema = new mongoose.Schema({
   },
 
   sellerId: {
-    type: mongoose.Schema.Types.ObjectId,
+     type: ObjectId, 
     ref: "seller",
+    
   },
 });
 

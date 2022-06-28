@@ -13,22 +13,18 @@ const {
   myMsgs,
   deletetheMsg,
   updatePassSeller,
+  updatePhotoSeller,
 } = require("../Controllers/SellerMController");
 const { isAuth, isAuthSeller } = require("../Middleware/AuthSeller");
+const { upload } = require("../Middleware/Upload");
 const SellerMRouter = express.Router();
 
-//get profil seller
-SellerMRouter.get("/profilSeller/:id", isAuthSeller, getsellerProfil);
 
 //delete profil seller
-SellerMRouter.delete(
-  "/deleteprofilSeller/:id",
-  isAuthSeller,
-  deleteProfilSeller
-);
+SellerMRouter.delete( "/deleteprofilSeller", isAuthSeller, deleteProfilSeller);
 
 //update profil seller
-SellerMRouter.put("/updateprofilSeller/:id", isAuthSeller, updateprofilSeller);
+SellerMRouter.put("/updateprofilSeller", isAuthSeller, updateprofilSeller);
 
 //update password
 SellerMRouter.put("/updatePasswordSeller", isAuthSeller, updatePassSeller);
@@ -42,14 +38,15 @@ SellerMRouter.put("/updateOffer/:id", isAuthSeller, updateOffer);
 //delete offer
 SellerMRouter.delete("/deleteOffer/:id", isAuthSeller, deleteOffer);
 
-//get all offers
-SellerMRouter.get("/allOffers", getAllOffers);
-
 //get my offers
 SellerMRouter.get("/myOffers", isAuthSeller, getMyOffers);
 
 //get all messages
 SellerMRouter.get("/myMsgs", isAuthSeller, myMsgs);
+
+//update photo 
+SellerMRouter.put("/updatePhotoSeller",isAuthSeller,upload.single('imageSeller'),updatePhotoSeller)
+
 
 //delete message
 SellerMRouter.delete("/deletetheMsg/:id", isAuthSeller, deletetheMsg);
