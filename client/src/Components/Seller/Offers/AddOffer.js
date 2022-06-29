@@ -1,19 +1,25 @@
+
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
 import { addOffer } from '../../../JS/Actions/SellerActions'
 function AddOffer() {
   const [title, setTitle] = useState("")
   const [description, setDescription] = useState("")
   const [category, setCategory] = useState("")
   const [date, setDate] = useState("")
-
+  const [photo, setPhoto] = useState(null)
   const dispatch=useDispatch()
-  const navigate=useNavigate()
-  const handleadd=()=>{
-    dispatch(addOffer({title,category,description,date}))
-    navigate('/myOffers')
-  }
+  const AddOffer=async(e)=>{
+    e.preventDefault()
+    const data= new FormData()
+    data.append('offreImage',photo)
+    data.append("title",title)
+    data.append("description",description)
+    data.append("category",category)
+    data.append("date",date)
+        dispatch(addOffer(data))
+   }
+  
   return (
     <div className="container h-100">
     <div className="row h-100">
@@ -28,7 +34,8 @@ function AddOffer() {
           <div className="card">
             <div className="card-body">
               <div className="m-sm-4">
-                <form onSubmit={handleadd}>
+                <form onSubmit={AddOffer}>
+                <input  type="file" onChange={(e)=>setPhoto(e.target.files[0])}/>
                 <div className="form-group">
                     <label>Category:</label>
                     <input onChange={(e)=>setCategory(e.target.value)} value={category} className="form-control form-control-lg" type="text" name="category" placeholder="Enter category" />

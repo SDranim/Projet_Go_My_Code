@@ -8,7 +8,7 @@ const bcrypt = require("bcrypt");
 exports.deleteProfilSeller = async (req, res) => {
   try {
     await sellers.findByIdAndDelete(req.user._id);
-    await offers.deleteMany({sellerId:req.seller._id})
+    await offers.deleteMany({sellerId:req.user._id})
     res.status(200).send({ msg: "account deleted" });
   } catch (error) {
     res.status(400).send({ msg: "could not delete" });
@@ -62,13 +62,13 @@ exports.updatePhotoSeller=async(req,res)=>{
 }
 
 //get messages
-//API /myMsgs
+//API /SellerMsgs
 exports.myMsgs = async (req, res) => {
   try {
-    const msgs = await contacts.find();
-    res.status(200).send({ msg: "list of messages", msgs });
+    const message = await contacts.find({sellerId:req.user._id});
+    res.status(200).send({ msg: "list of messages", message });
   } catch (error) {
-    res.status(400).send("could not get messages");
+    res.status(400).send(error);
   }
 };
 

@@ -46,7 +46,6 @@ export const getCurrentUser =()=>async(dispatch)=>{
   }
   try {
       const res = await axios.get('/api/authUser/currentUser',config)
-      console.log(res.data)
 
       dispatch({type:GET_CURRENT, payload: res.data.user})
   } catch (error) {

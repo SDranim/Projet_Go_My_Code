@@ -84,8 +84,9 @@ exports.updatePhotoUser=async(req,res)=>{
 // method POST
 // API : /contactSeller
 exports.contactSeller = async (req, res) => {
+ 
   try {
-    const newContactS = new contacts({...req.body,sellerId:req.params.id,userId:req.use._id});
+    const newContactS = new contacts({...req.body,sellerId:req.params.id,userId:req.user._id});
     await newContactS.save();
     res.status(200).send({ msg: "Message sent successfully", newContactS });
   } catch (error) {

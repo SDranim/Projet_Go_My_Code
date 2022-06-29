@@ -13,6 +13,7 @@ function OfferCard({e}) {
       navigate("/myOffers");
     }
   };
+
   return (
   <div>
       <div id="container">	
@@ -21,10 +22,14 @@ function OfferCard({e}) {
       <h6>{e.category}</h6>
           <p className="information">{e.description}</p>
           <div className="control">
-          <Link to="/updateOffer">
+          <Link to={`/updateOffer/${e._id}`}>
           <Button variant="outline-warning">Update</Button>
           </Link>
+          <Link to={`/changeOfferImage/${e._id}`}>
+          <Button variant="outline-warning">Update Image</Button>
+          </Link>
           <Button onClick={handleDeleteOffer} variant="outline-danger">Delete</Button>
+          
           </div>
         </div>
         <div className="product-image">

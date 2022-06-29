@@ -47,7 +47,7 @@ navigate('/allOffers')
         </div>
         <div className="col-lg-6">
           <div className="about-avatar">
-            <img src={seller&&seller.photo ? `Image/${seller.photo}`: "https://bootdey.com/img/Content/avatar/avatar7.png"} alt="" />
+            <img src={seller&&seller.photo ? `Image/${seller.photo}`: "https://upload.wikimedia.org/wikipedia/commons/7/70/User_icon_BLACK-01.png"} alt="" />
           </div>
         </div>
       </div>

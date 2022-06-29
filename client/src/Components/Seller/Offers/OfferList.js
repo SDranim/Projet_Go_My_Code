@@ -25,7 +25,7 @@ dispatch(myOffers())
    <div class="wave"></div>
    <div class="wave"></div>
  </div>
- : Offers.map((e,i)=>(< OfferCard e={e} key={i}/>)) }
+  : !Offers.length ? <h2>no offers</h2>: Offers.map((e,i)=>(< OfferCard e={e} key={i}/>)) }
     </div>
   )
 }

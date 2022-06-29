@@ -13,6 +13,8 @@ import "./Css/Updateprofile.css"
 import"./Css/offerlist.css"
 import"./Css/sellersCard.css"
 import"./Css/Search.css"
+import"./Css/Msg.css"
+import"./Css/CardSU.css"
 import { Provider } from "react-redux";
 import { store } from "./JS/Store";
 

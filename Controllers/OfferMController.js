@@ -5,13 +5,8 @@ const offers = require("../Models/OfferSchema");
 exports.addOffer = async (req, res) => {
  const {title,category,date,description}=req.body
  console.log(title)
- console.log(category)
- console.log(date)
- console.log(description)
- console.log(req.user._id)
   try {
     const newOffer = new offers({title, category,date,description, sellerId:req.user._id,photo:req.file.filename});
-    console.log(newOffer)
     await newOffer.save();
     res.status(200).send({ msg: "offer added succesfully", newOffer });
   } catch (error) {
@@ -22,10 +17,11 @@ exports.addOffer = async (req, res) => {
 //update offer
 //API /updateOffer/:id
 exports.updateOffer = async (req, res) => {
+  console.log(req.file)
   try {
     const updatedOffer = await offers.findByIdAndUpdate(
       req.params.id,
-      { $set: req.body },
+      { $set: {...req.body }},
       { new: true }
     );
     res.status(200).send({ msg: "offer updated successfully", updatedOffer });
@@ -77,3 +73,14 @@ exports.getSellerOffers = async (req, res) => {
     res.status(400).send("could not get offers");
   }
 };
+
+//update image 
+exports.updatePhotoOffer=async(req,res)=>{
+    
+  try {
+  const updatedphoto= await offers.findByIdAndUpdate(req.params.id, {$set:{photo:req.file.filename}} ,{new:true})
+  res.status(200).send({msg:"photo updated successfully",updatedphoto})        
+} catch (error) {
+      res.status(500).send({msg:"could not update photo"})        
+  }
+}

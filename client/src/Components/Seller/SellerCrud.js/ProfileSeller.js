@@ -47,7 +47,7 @@ function ProfileSeller() {
             </div>
             <div className="col-lg-6">
               <div className="about-avatar">
-                <img src={user&&user.photo ? `Image/${user.photo}`: "https://bootdey.com/img/Content/avatar/avatar7.png"} alt="" />
+                <img src={user&&user.photo ? `Image/${user.photo}`: "https://upload.wikimedia.org/wikipedia/commons/7/70/User_icon_BLACK-01.png"} alt="" />
               </div>
             </div>
           </div>

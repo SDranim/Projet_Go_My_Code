@@ -30,7 +30,7 @@ function ChangePhoto() {
    }
   return (
     <div className='container'>
-        <img src={user&&user.photo ? `Image/${user.photo}`: "https://bootdey.com/img/Content/avatar/avatar7.png"} alt=""/>
+        <img src={user&&user.photo ? `Image/${user.photo}`: "https://upload.wikimedia.org/wikipedia/commons/7/70/User_icon_BLACK-01.png"} alt=""/>
 <br/>
     <input  type="file" onChange={(e)=>setPhoto(e.target.files[0])}/>
     {/* <button onClick={EditPhoto}>submit</button> */}

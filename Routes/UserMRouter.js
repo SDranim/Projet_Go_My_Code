@@ -31,6 +31,6 @@ UserMRouter.put("/updatePasswordUser", isAuthUser, updatePassUser);
 UserMRouter.put("/updatePhotoUser", isAuthUser, upload.single("imageUser"), updatePhotoUser);
 
 //contact seller
-UserMRouter.post("/contactSeller", isAuthUser, contactSeller);
+UserMRouter.post("/contactSeller/:id", isAuthUser, contactSeller);
 
 module.exports = UserMRouter;

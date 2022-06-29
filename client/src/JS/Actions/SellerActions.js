@@ -21,13 +21,14 @@ export const myOffers=()=>async(dispatch)=>{
 }
 //add 
 export const addOffer=(newOffer)=>async(dispatch)=>{
+
     const config={
         headers:{
             authorization:localStorage.getItem('token')
         }
     } 
     try {
-        await axios.post("/api/Seller/addOffer",newOffer,config)
+        await axios.post("/api/seller/addoffer",newOffer,config)
         dispatch(myOffers())
     } catch (error) {
         console.log(error)
@@ -51,7 +52,20 @@ export const deleteOffer=(id)=>async(dispatch)=>{
     } 
 
     //update offer 
-
+    export const UpdateOfferS =(updatedOffer,id)=>async(dispatch)=>{
+        const config={
+            headers:{
+                authorization:localStorage.getItem('token')
+            }
+        }
+        try {
+            await axios.put(`/api/Seller/updateOffer/${id}`,updatedOffer,config)
+            dispatch(myOffers())
+          
+        } catch (error) {
+            dispatch({type:FAIL})
+        }
+        } 
 
 
 //profile
