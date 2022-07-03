@@ -1,18 +1,19 @@
 import React from 'react'
-import { Button } from 'react-bootstrap'
+import { Button } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { deleteUser } from '../../JS/Actions/AdminActions';
+import { deleteSeller } from '../../JS/Actions/AdminActions';
 
-function UserCard({user}) {
+
+function ASellerCard({seller}) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handledelete= () => {
-    dispatch(deleteUser(user._id));
-    navigate("/users");
+    dispatch(deleteSeller(seller._id));
+    navigate("/sellers");
   };
   return (
-<div className="a-box">
+    <div className="a-box">
      <div className="img-container">
        <div className="img-inner">
          <div className="inner-skew">
@@ -21,13 +22,13 @@ function UserCard({user}) {
        </div>
      </div>
      <div className="text-container">
-       <h3>{user?.first_name}</h3>
+       <h3>{seller?.name}</h3>
        <div>
-       <Button onClick={handledelete} variant="outline-danger">Delete User</Button>
+       <Button onClick={handledelete} variant="outline-danger">Delete seller</Button>
        </div>
      </div>
    </div>
   )
 }
 
-export default UserCard
+export default ASellerCard

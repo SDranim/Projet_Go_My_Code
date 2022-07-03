@@ -3,13 +3,11 @@ const {
   addOffer,
   updateOffer,
   deleteOffer,
-  getAllOffers,
   getMyOffers,
   getSellerOffers,
   updatePhotoOffer,
 } = require("../Controllers/OfferMController");
 const {
-  getsellerProfil,
   deleteProfilSeller,
   updateprofilSeller,
   myMsgs,
@@ -17,11 +15,13 @@ const {
   updatePassSeller,
   updatePhotoSeller,
 } = require("../Controllers/SellerMController");
-const { isAuthSeller } = require("../Middleware/AuthSeller");
-const { isAuthUser } = require("../Middleware/AuthUser");
-const { upload } = require("../Middleware/Upload");
+const {isAuthSeller} = require("../Middleware/AuthSeller");
+const {isAuthUser} = require("../Middleware/AuthUser");
+const {validationSeller, passwordValidationSeller} = require("../Middleware/SellerValidation");
+const {upload} = require("../Middleware/Upload");
 const SellerMRouter = express.Router();
 
+//Profile
 //delete profil seller
 SellerMRouter.delete("/deleteprofilSeller", isAuthSeller, deleteProfilSeller);
 
@@ -29,10 +29,21 @@ SellerMRouter.delete("/deleteprofilSeller", isAuthSeller, deleteProfilSeller);
 SellerMRouter.put("/updateprofilSeller", isAuthSeller, updateprofilSeller);
 
 //update password
-SellerMRouter.put("/updatePasswordSeller", isAuthSeller, updatePassSeller);
+SellerMRouter.put(
+  "/updatePasswordSeller",
+  isAuthSeller,
+  validationSeller,
+  passwordValidationSeller,
+  updatePassSeller
+);
 
+//update photo
+SellerMRouter.put("/updatePhotoSeller", isAuthSeller, upload.single("imageSeller"), updatePhotoSeller);
+
+//Offer
 //add offer
 SellerMRouter.post("/addOffer", isAuthSeller, upload.single("offreImage"), addOffer);
+
 //update image
 SellerMRouter.put("/updateImage/:id", isAuthSeller, upload.single("newoffreImage"), updatePhotoOffer);
 
@@ -45,13 +56,12 @@ SellerMRouter.delete("/deleteOffer/:id", isAuthSeller, deleteOffer);
 //get my offers
 SellerMRouter.get("/myOffers", isAuthSeller, getMyOffers);
 
-//get all messages
-SellerMRouter.get("/SellerMsgs", isAuthSeller, myMsgs);
 //get seller offers
 SellerMRouter.get("/selleroffers/:id", isAuthUser, getSellerOffers);
 
-//update photo
-SellerMRouter.put("/updatePhotoSeller", isAuthSeller, upload.single("imageSeller"), updatePhotoSeller);
+//Messages
+//get all messages
+SellerMRouter.get("/SellerMsgs", isAuthSeller, myMsgs);
 
 //delete message
 SellerMRouter.delete("/deletetheMsg/:id", isAuthSeller, deletetheMsg);

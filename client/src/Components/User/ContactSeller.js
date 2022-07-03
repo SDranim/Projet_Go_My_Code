@@ -1,6 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { useParams } from 'react-router-dom'
+import { sendMsgSeller } from '../../JS/Actions/UserActions'
 
 function ContactSeller() {
+  const [message, setMessage] = useState("")
+  const [first_name, setFirst_Name] = useState("")
+  const [last_name, setLast_Name] = useState("")
+  const [email, setEmail] = useState("")
+  const [phone_number, setPhone_number] = useState("")
+  const {id}=useParams()
+  const dispatch=useDispatch()
+  const handlecontact=()=>{
+    dispatch(sendMsgSeller({message,first_name,last_name,email,phone_number},id,setEmail(""),setFirst_Name(""),setLast_Name(""),setMessage(''),setPhone_number("")))
+    alert('msg sent')
+  }
   return (
     <div>
     <small>Enter message and click button "Send"</small>
@@ -9,21 +23,24 @@ function ContactSeller() {
         <div className="side">
           <h1>Contact for more details</h1>
           <p>
-            <textarea placeholder="Your message" defaultValue={""} />
+            <textarea onChange={(e)=>setMessage(e.target.value)} value={message} placeholder="Your message" defaultValue={""} />
           </p>
         </div>
         <div className="side">
           <p>
-            <input type="text" placeholder="Your name" />
+            <input onChange={(e)=>setFirst_Name(e.target.value)} value={first_name}  className='in' type="text" placeholder="Your first name" />
           </p>
           <p>
-            <input type="email" placeholder="Your email" />
+            <input  onChange={(e)=>setLast_Name(e.target.value)} value={last_name}  className='in' type="text" placeholder="Your last name" />
           </p>
           <p>
-            <input type="text" placeholder="Your phone number " />
+            <input  onChange={(e)=>setEmail(e.target.value)} value={email}  className='in' type="email" placeholder="Your email" />
           </p>
           <p>
-            <button id="sendLetter">Send</button>
+            <input  onChange={(e)=>setPhone_number(e.target.value)} value={phone_number}  className='in' type="text" placeholder="Your phone number " />
+          </p>
+          <p>
+            <button onClick={handlecontact} id="sendLetter">Send</button>
           </p>
         </div>
       </article>

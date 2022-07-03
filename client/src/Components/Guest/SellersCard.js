@@ -14,17 +14,17 @@ navigate('/getprofileSeller')
   return (
     <div className='container'>
     <div style={{width:"500px"}}>
-      <a href className="card" >
-        <img src={seller&&seller.photo ? `Image/${seller.photo}`: "https://bootdey.com/img/Content/avatar/avatar7.png"} className="card__image" alt="" />
-        <div className="card__overlay">
-          <div className="card__header">
-            <svg className="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                     
-            <img className="card__thumb" src={seller&&seller.photo ? `Image/${seller.photo}`: "https://bootdey.com/img/Content/avatar/avatar7.png"}  alt="" />
-            <div className="card__header-text">
-              <h3 className="card__title">{seller.name}</h3>            
+      <a href className="card-s" >
+        <img src={seller&&seller.photo ? `Image/${seller.photo}`: "https://upload.wikimedia.org/wikipedia/commons/7/70/User_icon_BLACK-01.png"} className="card__image-s " alt="" />
+        <div className="card__overlay-s ">
+          <div className="card__header-s ">
+            <svg className="card__arc-s " xmlns="http://www.w3.org/2000/svg"><path /></svg>                     
+            <img className="card__thumb-s " src={seller&&seller.photo ? `Image/${seller.photo}`: "https://upload.wikimedia.org/wikipedia/commons/7/70/User_icon_BLACK-01.png"}  alt="" />
+            <div className="card__header-text-s ">
+              <h3 className="card__title-s ">{seller.name}</h3>            
             </div>
           </div>
-          <p className="card__description">{seller.slogan}</p>
+          <p className="card__description-s ">{seller.slogan}</p>
           <button onClick={handleGetSeller}>Profile</button>
         </div>
       </a>      

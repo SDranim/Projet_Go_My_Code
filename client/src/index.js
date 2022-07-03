@@ -15,6 +15,8 @@ import"./Css/sellersCard.css"
 import"./Css/Search.css"
 import"./Css/Msg.css"
 import"./Css/CardSU.css"
+import"./Css/OfferDetails.css"
+import"./Css/OfferSearch.css"
 import { Provider } from "react-redux";
 import { store } from "./JS/Store";
 

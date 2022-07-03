@@ -1,23 +1,19 @@
 const express = require("express");
-const { getsellerProfil } = require("../Controllers/UserMController");
+const {Findoffer} = require("../Controllers/OfferMController");
+const {getsellerProfil} = require("../Controllers/UserMController");
 const {
-  getMyProfil,
   deleteProfil,
   updateprofil,
   contactSeller,
   updatePassUser,
   updatePhotoUser,
 } = require("../Controllers/UserMController");
-const { isAuthUser } = require("../Middleware/AuthUser");
-const { upload } = require("../Middleware/Upload");
+const {isAuthUser} = require("../Middleware/AuthUser");
+const {upload} = require("../Middleware/Upload");
+const {validationUser, contactValidation, passwordValidationUser} = require("../Middleware/UserValidation");
 const UserMRouter = express.Router();
 
-// //get profil user
-// UserMRouter.get("/myprofilUser", isAuthUser, getMyProfil);
-
-//get profil seller
-UserMRouter.get("/profilseller/:id", isAuthUser, getsellerProfil);
-
+//Profile
 //delete profil user
 UserMRouter.delete("/deleteprofilUser", isAuthUser, deleteProfil);
 
@@ -25,12 +21,20 @@ UserMRouter.delete("/deleteprofilUser", isAuthUser, deleteProfil);
 UserMRouter.put("/updateprofilUser", isAuthUser, updateprofil);
 
 //update password
-UserMRouter.put("/updatePasswordUser", isAuthUser, updatePassUser);
+UserMRouter.put("/updatePasswordUser", isAuthUser, validationUser, passwordValidationUser, updatePassUser);
 
 //update photo
 UserMRouter.put("/updatePhotoUser", isAuthUser, upload.single("imageUser"), updatePhotoUser);
 
+//To Seller
+//get profil seller
+UserMRouter.get("/profilseller/:id", isAuthUser, getsellerProfil);
+
 //contact seller
-UserMRouter.post("/contactSeller/:id", isAuthUser, contactSeller);
+UserMRouter.post("/contactSeller/:id", isAuthUser, contactValidation, validationUser, contactSeller);
+
+//Rechercher  un offre
+//method get
+UserMRouter.get("/Findoffers/:title", Findoffer);
 
 module.exports = UserMRouter;

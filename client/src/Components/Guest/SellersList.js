@@ -15,19 +15,19 @@ function SellersList() {
   return (
     <div className='sellerlist'>
     {loading?   
-     <div class="center">
-     <div class="wave"></div>
-     <div class="wave"></div>
-     <div class="wave"></div>
-     <div class="wave"></div>
-     <div class="wave"></div>
-     <div class="wave"></div>
-     <div class="wave"></div>
-     <div class="wave"></div>
-     <div class="wave"></div>
-     <div class="wave"></div>
+     <div className="center">
+     <div className="wave"></div>
+     <div className="wave"></div>
+     <div className="wave"></div>
+     <div className="wave"></div>
+     <div className="wave"></div>
+     <div className="wave"></div>
+     <div className="wave"></div>
+     <div className="wave"></div>
+     <div className="wave"></div>
+     <div className="wave"></div>
    </div>
-   : sellers.map((seller,i)=>(< SellersCard seller={seller} key={i}/>)) }
+   : !sellers.length ? <h2>No sellers</h2>: sellers.map((seller,i)=>(< SellersCard seller={seller} key={i}/>)) }
       </div>
   )
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
-import { allmessages } from "../../JS/Actions/AdminActions";
+import {useNavigate } from "react-router-dom";
+import { allmessages, allOffers, allSellers, allUsers } from "../../JS/Actions/AdminActions";
 
 function AdminProfile() {
   const dispatch = useDispatch();
@@ -9,6 +9,18 @@ function AdminProfile() {
   const handleMsgs = () => {
     dispatch(allmessages());
     navigate("/messages");
+  };
+  const handleUsers = () => {
+    dispatch(allUsers());
+    navigate("/users");
+  };
+  const handleSellers= () => {
+    dispatch(allSellers());
+    navigate("/sellers");
+  };
+  const handleOffers= () => {
+    dispatch(allOffers());
+    navigate("/offers");
   };
   return (
     <div>
@@ -41,25 +53,25 @@ function AdminProfile() {
                   </button>
                 </div>
                 <div className="count-data text-center">
-                  <Link to="/sellers">
-                    <button type="button" className="btn btn-outline-warning">
+                  
+                    <button onClick={handleSellers} type="button" className="btn btn-outline-warning">
                       Sellers
                     </button>
-                  </Link>
+      
                 </div>
                 <div className="count-data text-center">
-                  <Link to="/users">
-                    <button type="button" className="btn btn-outline-warning">
+                  
+                    <button onClick={handleUsers} type="button" className="btn btn-outline-warning">
                       Users
                     </button>
-                  </Link>
+                 
                 </div>
                 <div className="count-data text-center">
-                  <Link to="/offers">
-                    <button type="button" className="btn btn-outline-warning">
+                  
+                    <button onClick={handleOffers} type="button" className="btn btn-outline-warning">
                       Offers
                     </button>
-                  </Link>
+                 
                 </div>
               </div>
             </div>

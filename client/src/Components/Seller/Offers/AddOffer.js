@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { addOffer } from '../../../JS/Actions/SellerActions'
+import {useNavigate} from "react-router-dom"
 function AddOffer() {
   const [title, setTitle] = useState("")
   const [description, setDescription] = useState("")
@@ -9,6 +10,7 @@ function AddOffer() {
   const [date, setDate] = useState("")
   const [photo, setPhoto] = useState(null)
   const dispatch=useDispatch()
+  const navigate=useNavigate()
   const AddOffer=async(e)=>{
     e.preventDefault()
     const data= new FormData()
@@ -18,6 +20,7 @@ function AddOffer() {
     data.append("category",category)
     data.append("date",date)
         dispatch(addOffer(data))
+       navigate('/myOffers')
    }
   
   return (

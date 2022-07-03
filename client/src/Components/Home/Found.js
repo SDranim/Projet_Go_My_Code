@@ -2,7 +2,7 @@ import React from 'react'
 import { Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
-function OffersCard({offer}) {
+function Found({offer}) {
   return (
     <div>
     <div id="container">	
@@ -34,4 +34,4 @@ function OffersCard({offer}) {
   )
 }
 
-export default OffersCard
+export default Found

@@ -7,12 +7,9 @@ const {
   getMsgs,
   deleteMsg,
 } = require("../Controllers/AdminController");
-const {
-  getAllOffers,
-  deleteOffer,
-} = require("../Controllers/OfferMController");
-const { isAdmin } = require("../Middleware/AuthAdmin");
-const { isAuthUser } = require("../Middleware/AuthUser");
+const {getAllOffers, deleteOffer} = require("../Controllers/OfferMController");
+const {isAdmin} = require("../Middleware/AuthAdmin");
+const {isAuthUser} = require("../Middleware/AuthUser");
 const AdminRouter = express.Router();
 
 //get all users

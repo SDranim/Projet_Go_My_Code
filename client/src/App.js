@@ -3,8 +3,8 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getCurrentSeller } from "./JS/Actions/AuthSellerActions";
 import { getCurrentUser } from "./JS/Actions/AuthUserActions";
-import Home from "./Components/Home";
-import Navigation from "./Components/Navigation";
+import Home from "./Components/Home/Home";
+import Navigation from "./Components/Home/Navigation";
 import OffersList from "./Components/Guest/OffersList";
 import ContactUs from "./Components/Guest/ContactUs";
 import SignIn from "./Components/Auth/SignIn";
@@ -25,11 +25,13 @@ import OfferList from "./Components/Seller/Offers/OfferList"
 import Offerdetails from "./Components/Guest/Offerdetails"
 import SellersList from "./Components/Guest/SellersList"
 import GetProfileSeller from "./Components/User/GetProfileSeller"
-import SSellersList from "./Components/Admin/SSellersList"
+import ASellersList from "./Components/Admin/ASellersList"
 import Userslist from "./Components/Admin/Userslist"
-import SOffersList from "./Components/Admin/SOffersList"
+import AOffersList from "./Components/Admin/AOffersList"
 import GetMessages from "./Components/Admin/GetMessages"
 import UpdatePhotoOffer from "./Components/Seller/Offers/UpdatePhotoOffer";
+import ContactSeller from "./Components/User/ContactSeller";
+import GetUsersMessages from "./Components/Seller/SellerCrud.js/GetUsersMessages";
 
 
 function App() {
@@ -53,7 +55,9 @@ function App() {
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/allOffers" element={<OffersList/>} />
         <Route path="/SellersList" element={<SellersList/>} />
-        <Route path="/offerDetails" element={<PrivateRoute><Offerdetails/></PrivateRoute>} />
+        <Route path="/offerDetails/:id" element={<PrivateRoute><Offerdetails/></PrivateRoute>} />
+        
+
 
         {/* user routes */}
         <Route path="/profileUser"element={<PrivateRoute><ProfileUser /></PrivateRoute>}/>
@@ -61,6 +65,8 @@ function App() {
         <Route path="/editPassword" element={<PrivateRoute><Editpassword /></PrivateRoute>} />
         <Route path="/editPhoto" element={<PrivateRoute><ChangePhoto /></PrivateRoute>} />
         <Route path="/GetProfileSeller" element={<PrivateRoute><GetProfileSeller /></PrivateRoute>} />
+        <Route path="/contactSeller/:id" element={<PrivateRoute><ContactSeller /></PrivateRoute>} />
+
 
 
         {/* seller routes */}
@@ -72,14 +78,17 @@ function App() {
         <Route path="/myOffers" element={<PrivateRoute><OfferList /></PrivateRoute>} />
         <Route path="/updateOffer/:id" element={<PrivateRoute><UpdateOffer /></PrivateRoute>} />
         <Route path="/changeOfferImage/:id" element={<PrivateRoute><UpdatePhotoOffer /></PrivateRoute>} />
+        <Route path="/userMsgs" element={<PrivateRoute>< GetUsersMessages/></PrivateRoute>} />
+
+       
 
 
        
         {/* admin router */}
         <Route path="/AdminProfile" element={<PrivateRoute><AdminProfile/></PrivateRoute>} />
-        <Route path="/sellers" element={<PrivateRoute><SSellersList/></PrivateRoute>} />
+        <Route path="/sellers" element={<PrivateRoute><ASellersList/></PrivateRoute>} />
         <Route path="/users" element={<PrivateRoute><Userslist/></PrivateRoute>} />
-        <Route path="/offers" element={<PrivateRoute><SOffersList/></PrivateRoute>} />
+        <Route path="/offers" element={<PrivateRoute><AOffersList/></PrivateRoute>} />
         <Route path="/messages" element={<PrivateRoute>< GetMessages /></PrivateRoute>} />
 
 

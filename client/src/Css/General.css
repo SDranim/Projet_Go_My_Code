@@ -1,6 +1,31 @@
 body {
-  background-color: #ede6db;
+  background-color: #fcf8e8;
 }
 .nav {
   margin-top: 30px;
+  background-color: #a696c8;
+  font-family: "Century Gothic", Verdana, sans-serif;
+}
+#nav_btn {
+  color: #570a57;
+  border-color: #570a57;
+}
+#nav_r {
+  margin-left: 850px;
+  color: #facbd3;
+}
+#color_h {
+  color: #570a57;
+}
+#color {
+  color: #f0ebe3;
+}
+#color_i {
+  color: #f0ebe3;
+}
+
+#color_n {
+  margin-left: 10px;
+  color: #f0ebe3;
+  font-family: "Dancing Script";
 }

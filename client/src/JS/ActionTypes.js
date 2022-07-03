@@ -5,6 +5,8 @@ export const GET_CURRENT = "GET_CURRENT";
 export const LOADING = "LOADING";
 export const LOGOUT = "LOGOUT";
 export const FAIL = "FAIL";
+export const GETU_MSGS="GETU_MSGS"
+export const FIND_OFFER="FIND_OFFER"
 
 //offers
 export const MY_OFFERS = 'MY_OFFERS'

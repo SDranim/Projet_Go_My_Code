@@ -25,7 +25,7 @@ function OffersList() {
      <div class="wave"></div>
      <div class="wave"></div>
    </div>
-   : !Offers.length ? <h2>no offers</h2>:Offers.map((offer,i)=>(< OffersCard offer={offer} key={i}/>))
+   : !Offers.length ? <h2>No Offers</h2>:Offers.map((offer,i)=>(< OffersCard offer={offer} key={i}/>))
     }
       </div>
   )

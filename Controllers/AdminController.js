@@ -6,10 +6,10 @@ const contacts = require("../Models/GuestContactSchema");
 //API /allUsers
 exports.getUsers = async (req, res) => {
   try {
-    const allUsers = await users.find({ role: "user" }).select("-password");
-    res.status(200).send({ msg: "list of users", allUsers });
+    const allUsers = await users.find({role: "user"}).select("-password");
+    res.status(200).send({msg: "List of users", allUsers});
   } catch (error) {
-    res.status(400).send("could not get Candidats");
+    res.status(500).send("Could not get users");
   }
 };
 
@@ -18,9 +18,9 @@ exports.getUsers = async (req, res) => {
 exports.deleteUser = async (req, res) => {
   try {
     await users.findByIdAndDelete(req.params.id);
-    res.status(200).send({ msg: "user account deleted" });
+    res.status(200).send({msg: "User account deleted"});
   } catch (error) {
-    res.status(400).send({ msg: "could not delete user" });
+    res.status(500).send({msg: "Could not delete user"});
   }
 };
 
@@ -28,12 +28,10 @@ exports.deleteUser = async (req, res) => {
 //API /allSellers
 exports.getSellers = async (req, res) => {
   try {
-    const allSellers = await sellers
-      .find({ role: "seller" })
-      .select("-password");
-    res.status(200).send({ msg: "list of sellers", allSellers });
+    const allSellers = await sellers.find({role: "seller"}).select("-password");
+    res.status(200).send({msg: "List of sellers", allSellers});
   } catch (error) {
-    res.status(400).send("could not get Candidats");
+    res.status(500).send("Could not get sellers");
   }
 };
 
@@ -42,9 +40,9 @@ exports.getSellers = async (req, res) => {
 exports.deleteSeller = async (req, res) => {
   try {
     await sellers.findByIdAndDelete(req.params.id);
-    res.status(200).send({ msg: "seller account deleted" });
+    res.status(200).send({msg: "Seller account deleted"});
   } catch (error) {
-    res.status(400).send({ msg: "could not delete seller" });
+    res.status(500).send({msg: "Could not delete seller"});
   }
 };
 
@@ -53,9 +51,9 @@ exports.deleteSeller = async (req, res) => {
 exports.getMsgs = async (req, res) => {
   try {
     const msgs = await contacts.find();
-    res.status(200).send({ msg: "list of messages", msgs });
+    res.status(200).send({msg: "list of messages", msgs});
   } catch (error) {
-    res.status(400).send("could not get messages");
+    res.status(500).send("Could not get messages");
   }
 };
 
@@ -64,8 +62,8 @@ exports.getMsgs = async (req, res) => {
 exports.deleteMsg = async (req, res) => {
   try {
     await contacts.findByIdAndDelete(req.params.id);
-    res.status(200).send({ msg: "Message deleted" });
+    res.status(200).send({msg: "Message deleted"});
   } catch (error) {
-    res.status(400).send("could not delete message");
+    res.status(500).send("Could not delete message");
   }
 };

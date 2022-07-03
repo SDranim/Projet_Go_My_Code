@@ -1,5 +1,5 @@
 import {useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { getSellerOffers } from '../../JS/Actions/UserActions';
 
 
@@ -60,7 +60,14 @@ navigate('/allOffers')
               All Offers
             </button>
           </div>
-          
+          <div className="col-6 col-lg-3"></div>
+          <div className="count-data text-center">
+            <Link to={`/contactSeller/${seller?._id}`}>
+            <button  className="btn btn-outline-warning">
+              contact Us
+            </button>
+            </Link>
+          </div>
           </div>
         </div>
       </div>

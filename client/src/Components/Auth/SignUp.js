@@ -48,7 +48,7 @@ function SignUp() {
       colors: {
         ...theme.colors,
         primary25: "white",
-        primary: "#839AA8",
+        primary: "#BAABDA",
       },
     };
   }
@@ -60,12 +60,12 @@ function SignUp() {
   return (
     <div className="log">
       <title>Card</title>
-      <div id="card">
-        <div id="card-content">
-          <div id="card-title">
-            <h2>SignUp</h2>
-            <div className="underline-title" />
-            <h6> choose your role </h6>
+      <div id="card-a">
+        <div id="card-content-a">
+          <div id="card-title-a">
+            <h2 style={{  fontFamily: 'Dancing Script'}}>SignUp</h2>
+            <div />
+            <h6> Choose if you are: </h6>
             <Select
               className="mb-3"
               options={optionsRole}
@@ -74,34 +74,34 @@ function SignUp() {
               placeholder="client or seller"
             />
           </div>
-          <form onSubmit={handleSubmit} className="form">
+          <form onSubmit={handleSubmit} className="form-a">
             {userRole === "seller" ? (
               <>
-                <label style={{ paddingTop: "13px" }}>Name</label>
+                <label className="label-a" style={{ paddingTop: "13px" }}>Name</label>
                 <input
-                  className="form-content"
+                  className="form-content-a"
                   type="text"
                   autoComplete="on"
                   required
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                 />
-                <div className="form-border" />
-                <label style={{ paddingTop: "13px" }}>Email</label>
+                <div className="form-border-a" />
+                <label className="label-as" style={{ paddingTop: "13px" }}>Email</label>
                 <input
-                  className="form-content"
+                  className="form-content-a"
                   type="email"
                   autoComplete="on"
                   required
                   value={email_seller}
                   onChange={(e) => setEmailSeller(e.target.value)}
                 />
-                <div className="form-border" />
-                <label htmlFor="user-password" style={{ paddingTop: "22px" }}>
+                <div className="form-border-a" />
+                <label className="label-a" htmlFor="user-password" style={{ paddingTop: "22px" }}>
                   Password
                 </label>
                 <input
-                  className="form-content"
+                  className="form-content-a"
                   type="password"
                   name="password"
                   autoComplete="on"
@@ -109,56 +109,56 @@ function SignUp() {
                   value={password_seller}
                   onChange={(e) => setPasswordSeller(e.target.value)}
                 />
-                <div className="form-border" />
+                <div className="form-border-a" />
               </>
             ) : (
               <>
                 <label style={{ paddingTop: "13px" }}>First-Name</label>
                 <input
-                  className="form-content"
+                  className="form-content-a"
                   type="text"
                   autoComplete="on"
                   required
                   value={first_name}
                   onChange={(e) => setFirstName(e.target.value)}
                 />
-                <div className="form-border" />
-                <label style={{ paddingTop: "13px" }}>Last-Name</label>
+                <div className="form-border-a" />
+                <label className="label-a" style={{ paddingTop: "13px" }}>Last-Name</label>
                 <input
-                  className="form-content"
+                  className="form-content-a"
                   type="text"
                   autoComplete="on"
                   required
                   value={last_name}
                   onChange={(e) => setLastName(e.target.value)}
                 />
-                <div className="form-border" />
-                <label style={{ paddingTop: "13px" }}>Email</label>
+                <div className="form-border-a" />
+                <label className="label-a" style={{ paddingTop: "13px" }}>Email</label>
                 <input
-                  className="form-content"
+                  className="form-content-a"
                   type="email"
                   autoComplete="on"
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
-                <div className="form-border" />
-                <label style={{ paddingTop: "22px" }}>Password</label>
+                <div className="form-border-a" />
+                <label className="label-a" style={{ paddingTop: "22px" }}>Password</label>
                 <input
-                  className="form-content"
+                  className="form-content-a"
                   type="password"
                   autoComplete="on"
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
-                <div className="form-border" />
+                <div className="form-border-a" />
               </>
             )}
-            <button id="submit-btn" type="submit">
+            <button id="submit-btn-a" type="submit">
             SignUp
             </button>
-            <a href="http://localhost:3000/signIn" id="signup">
+            <a href="http://localhost:3000/signIn" id="signup-a">
               You alredy have an account?
             </a>
           </form>

@@ -13,6 +13,7 @@ const guestReducer= (state = initialState, { type, payload }) => {
     return { ...state,sellers:payload.allSellers,load:false}
  case GET_SELLER:
   return { ...state,seller:payload.sellerInfo,load:false}
+
   default:
     return state
   }

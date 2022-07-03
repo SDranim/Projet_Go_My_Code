@@ -1,6 +1,7 @@
-import {GET_CURRENT, LOGIN, LOGOUT, REGISTER} from "../ActionTypes"
+import {GETU_MSGS, GET_CURRENT, LOGIN, LOGOUT, REGISTER} from "../ActionTypes"
 
 const initialState = {
+  messages:[],
     auth:false,
     load:true,
     user:null
@@ -20,6 +21,8 @@ const authReducer=(state = initialState, { type, payload }) => {
       localStorage.removeItem('token')
       localStorage.removeItem('user')
       return {...state, auth:false, load:false, user:null}
+  case GETU_MSGS:
+        return { ...state,messages:payload.message,load:false}
   default:
     return state
   }

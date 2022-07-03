@@ -2,6 +2,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { deleteAccountSeller, myOffers } from '../../../JS/Actions/SellerActions';
+import { allUsersmessages } from '../../../JS/Actions/UserActions';
 function ProfileSeller() {
   const user = useSelector((state) => state.authReducer.user);
   const dispatch=useDispatch()
@@ -12,6 +13,10 @@ function ProfileSeller() {
       navigate("/signUp");
     }
   };
+  const handleMsgs=()=>{
+    dispatch(allUsersmessages())
+    navigate('/userMsgs')
+  }
   return (
     <div>
 <section className="section about-section gray-bg" id="about">
@@ -56,11 +61,14 @@ function ProfileSeller() {
               <div className="flex">
               <div className="col-6 col-lg-3"></div>
               <div className="count-data text-center">
-              
                 <button onClick={()=>{dispatch(myOffers());navigate('/myOffers')}}  className="btn btn-outline-warning">
                   My Offers
                 </button>
-             
+              </div>
+              <div className="count-data text-center">
+                <button onClick={handleMsgs}  type="button" className="btn btn-outline-warning">
+                  Messages
+                </button>
               </div>
               <div className="count-data text-center">
                 <Link to="/addOffer">

@@ -14,13 +14,13 @@ function ContactUs() {
   }
 
   return (
-    <div className='contact'>
+    <div className='contact-a'>
     <small>Enter message and click button "Send"</small>
     <div className="wrapper centered">
       <article className="letter">
         <div className="side">
-          <h1>Contact us</h1>
-          <p>
+          <h1 id='h1-a'>Contact us</h1>
+          <p id='p1'>
             <textarea onChange={(e)=>setMessage(e.target.value)} value={message}  className='txt' placeholder="Your message" defaultValue={""} />
           </p>
         </div>
@@ -42,10 +42,7 @@ function ContactUs() {
           </p>
         </div>
       </article>
-      <div className="envelope front" />
-      <div className="envelope back" />
     </div>
-    <p className="result-message centered">Thank you for your message</p>
   </div>
   )
 }

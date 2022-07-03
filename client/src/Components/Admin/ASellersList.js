@@ -1,17 +1,17 @@
 import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { allUsers } from '../../JS/Actions/AdminActions';
-import UserCard from './Usercard';
+import { useDispatch, useSelector } from 'react-redux';
+import { allSellers } from '../../JS/Actions/AdminActions';
+import ASellerCard from './ASellerCard';
 
-function Userslist() {
+function SSellersList() {
   const dispatch = useDispatch();
   useEffect(()=>{
-  dispatch(allUsers())
+  dispatch(allSellers())
   },[dispatch])
-    const users = useSelector((state)=>state.adminReducer.users)
+    const sellers = useSelector((state)=>state.adminReducer.sellers)
     const loading= useSelector((state)=>state.adminReducer.load)
   return (
-<div className='offerlist'>
+    <div className='offerlist'>
   {loading?   
    <div class="center">
    <div class="wave"></div>
@@ -25,9 +25,9 @@ function Userslist() {
    <div class="wave"></div>
    <div class="wave"></div>
  </div>
-  : !users.length ? <h2>No Users</h2>: users.map((user,i)=>(< UserCard user={user} key={i}/>)) }
+  : !sellers.length ? <h2>No Users</h2>: sellers.map((seller,i)=>(< ASellerCard seller={seller} key={i}/>)) }
     </div>
   )
 }
 
-export default Userslist
+export default SSellersList

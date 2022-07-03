@@ -6,9 +6,8 @@ exports.Contact = async (req, res) => {
   try {
     const newMsg = new contacts(req.body);
     await newMsg.save();
-    res.status(200).send({ msg: "Message sent successfully", newMsg });
+    res.status(200).send({msg: "Message sent successfully", newMsg});
   } catch (error) {
-    res.status(400).send("could not send the message");
+    res.status(500).send("Could not send the message");
   }
 };
-
