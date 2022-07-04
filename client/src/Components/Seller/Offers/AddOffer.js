@@ -2,7 +2,8 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { addOffer } from '../../../JS/Actions/SellerActions'
-import {useNavigate} from "react-router-dom"
+import {Link, useNavigate} from "react-router-dom"
+import { Button } from 'react-bootstrap'
 function AddOffer() {
   const [title, setTitle] = useState("")
   const [description, setDescription] = useState("")
@@ -29,13 +30,13 @@ function AddOffer() {
       <div className="col-sm-10 col-md-8 col-lg-6 mx-auto d-table h-100">
         <div className="d-table-cell align-middle">
           <div className="text-center mt-4">
-            <h2 className="h2">Add New Offer</h2>
-            <p className="lead">
+            <h2 className="h2" style={{fontFamily: "Dancing Script",fontSize: "50px"}}>Add New Offer</h2>
+            <p style={{fontSize: "10px"}} className="lead">
               Enter The Offer Details.
             </p>
           </div>
-          <div className="card">
-            <div className="card-body">
+          <div className="card" style={{ Width:"500px", height:"400px"}}>
+            <div className="card-body" >
               <div className="m-sm-4">
                 <form onSubmit={AddOffer}>
                 <input  type="file" onChange={(e)=>setPhoto(e.target.files[0])}/>
@@ -56,7 +57,10 @@ function AddOffer() {
                     <input onChange={(e)=>setDate(e.target.value)} value={date} className="form-control form-control-lg" type="text" name="date" placeholder="Enter date" />
                   </div>
                   <div className="text-center mt-3">
-                    <button type="submit" class="btn btn-lg btn-primary" >Add</button>
+                  <Link to='/profileSeller'>
+     <Button style={{backgroundColor:"#570A57"}} variant="outline-light">Back</Button>
+     </Link>
+     <Button type="submit" style={{backgroundColor:"#D5A4CF"}} variant="outline-light">Add</Button>
                   </div>
                 </form>
               </div>

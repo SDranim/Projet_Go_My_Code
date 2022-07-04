@@ -27,6 +27,7 @@ function SignIn() {
       else {
        dispatch(loginUser({email, password }))
  navigate('/')
+
      }
    };
   const [userRole, setUserRole] = useState("user");

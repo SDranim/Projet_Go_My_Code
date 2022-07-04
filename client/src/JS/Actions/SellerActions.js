@@ -1,5 +1,6 @@
 import axios from "axios"
 import { FAIL, MY_OFFERS } from "../ActionTypes"
+import { setAlert } from "./Allert"
 import { getCurrentSeller, logout } from "./AuthSellerActions"
 
 
@@ -96,7 +97,8 @@ export const updateprofilSeller =(user)=>async(dispatch)=>{
         await axios.put('/api/Seller/updatePasswordSeller',updatedPass,config)               
         dispatch(logout())
     } catch (error) {
-        dispatch({type:FAIL})
+        dispatch({type:FAIL});
+        error.response.data.errors.forEach(error => dispatch(setAlert(error.msg)));
     }
     } 
 

@@ -1,3 +1,6 @@
+*{
+  font-family: "Century Gothic", Verdana, sans-serif;
+}
 body {
   background-color: #fcf8e8;
 }
@@ -11,7 +14,7 @@ body {
   border-color: #570a57;
 }
 #nav_r {
-  margin-left: 850px;
+  margin-left: 700px;
   color: #facbd3;
 }
 #color_h {

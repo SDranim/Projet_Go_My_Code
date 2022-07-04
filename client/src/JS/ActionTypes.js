@@ -22,3 +22,7 @@ export const A_MSGS="A_MSGS"
 export const A_USERS="A_USERS"
 export const A_OFFERS="A_OFFERS"
 export const A_SELLERS="A_SELLERS"
+
+//Alert ActionsTypes
+export const SETALERT='SETALERT'
+export const REMOVEALERT='REMOVEALERT'

@@ -13,16 +13,17 @@ const handledelete=()=>{
 }
   return (
       <div>
-      <div id="container">	
+      <div id="container-c">	
         <div className="product-details">
       <h1>{offer.title}</h1>
       <h6>category</h6>
           <div className="control">
-          <Button onClick={handledelete} variant="outline-danger">Delete Offer</Button>
+          <Button onClick={handledelete} style={{backgroundColor:"#F1BBD5",color:"#570A57"}} variant="outline-light">Delete Offer</Button>
+
           </div>
         </div>
         <div className="product-image">
-          <img src="" alt="" />
+          <img src={`Image/${offer?.photo}`} alt="" />
         </div>
       </div>
   </div>

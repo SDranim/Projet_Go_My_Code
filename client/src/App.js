@@ -32,6 +32,7 @@ import GetMessages from "./Components/Admin/GetMessages"
 import UpdatePhotoOffer from "./Components/Seller/Offers/UpdatePhotoOffer";
 import ContactSeller from "./Components/User/ContactSeller";
 import GetUsersMessages from "./Components/Seller/SellerCrud.js/GetUsersMessages";
+import Allert from "./Components/Allert";
 
 
 function App() {
@@ -47,6 +48,7 @@ function App() {
   return (
     <div className="App">
       <Navigation />
+      <Allert/>
       <Routes>
         {/* guest routes */}
         <Route path="/" element={<Home />} />

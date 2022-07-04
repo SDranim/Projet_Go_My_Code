@@ -1,6 +1,7 @@
 import React from 'react'
+import { Button } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
 function Offerdetails() {
 const offers=useSelector((state)=>state.OfferReducer.myOffers)
@@ -11,13 +12,16 @@ console.log(offer)
 
   return (
     <div>
-  <div className="container">
+        <Link to='/allOffers'>
+     <Button style={{backgroundColor:"#570A57"}} variant="outline-light">Back</Button>
+     </Link>
+  <div className="container-ss">
         
-        <div className="card">
-          <div className="card-header">
-            <img src={`./Image/${offer?.photo}`} alt="offer" />
+        <div className="card-ss">
+          <div className="card-header-ss">
+            {/* <img src={`Image/${offer?.photo}`} alt="" /> */}
           </div>
-          <div className="card-body">
+          <div className="card-body-ss">
             <span className="tag tag-purple">{offer?.category}</span>
             <h4>
           {offer?.title}

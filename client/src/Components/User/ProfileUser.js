@@ -1,7 +1,10 @@
 import React from "react";
+import { Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { deleteAccountUser } from "../../JS/Actions/UserActions";
+import { confirmAlert } from 'react-confirm-alert'
+import 'react-confirm-alert/src/react-confirm-alert.css';
 
 function ProfileUser() {
   const user = useSelector((state) => state.authReducer.user);
@@ -9,10 +12,20 @@ function ProfileUser() {
   const navigate = useNavigate();
 
   const handleDelete = () => {
-    if (window.confirm("Are you sure")) {
-      dispatch(deleteAccountUser());
-      navigate("/signUp");
-    }
+    confirmAlert({
+      title: 'Confirm to delete your account',
+      message: 'Are you sure to do this.',
+      buttons: [
+        {
+          label: 'Yes',
+          onClick: ()=> {dispatch(deleteAccountUser());navigate('/signUp')}
+        },
+        {
+          label: 'No',
+          onClick: () => navigate('/profileUser')
+        }
+      ]
+    });
   };
 
   return (
@@ -22,7 +35,7 @@ function ProfileUser() {
           <div className="row align-items-center flex-row-reverse">
             <div className="col-lg-6">
               <div className="about-text go-to">
-                <h3 className="dark-color">
+                <h3 id='h3-p' className="dark-color">
                   {user?.first_name} {user?.last_name}
                 </h3>
                 <div className="row about-list">
@@ -69,33 +82,29 @@ function ProfileUser() {
                 <div className="col-6 col-lg-3"></div>
                 <div className="count-data text-center">
                   <Link to="/editPhoto">
-                    <button type="button" className="btn btn-outline-warning">
-                      Change Photo
-                    </button>
+                    <Button  id="pBtn" variant="outline-light">
+                    Change Photo
+             </Button>
                   </Link>
                 </div>
                 <div className="count-data text-center">
                   <Link to="/userUpdate">
-                    <button type="button" className="btn btn-outline-warning">
-                      Edit Profile
-                    </button>
+                    <Button  id="pBtn" variant="outline-light">
+                    Edit Profile
+             </Button>
                   </Link>
                 </div>
                 <div className="count-data text-center">
                   <Link to="/editPassword">
-                    <button type="button" className="btn btn-outline-warning">
-                      Change password
-                    </button>
+                    <Button  id="pBtn" variant="outline-light">
+                    Change password
+             </Button>
                   </Link>
                 </div>
                 <div className="count-data text-center">
-                  <button
-                    type="button"
-                    className="btn btn-outline-warning"
-                    onClick={handleDelete}
-                  >
-                    Delete Profile
-                  </button>
+                  <Button  onClick={handleDelete}  id="pBtn" variant="outline-light">
+                  Delete Profile
+             </Button>
                 </div>
               </div>
             </div>

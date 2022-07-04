@@ -1,4 +1,13 @@
-
+.offerlist{
+  display: flex;
+  justify-content:space-around;
+}
+.offerlist h2{
+text-align: center;
+color: #A696C8;
+font-family: "Dancing Script";
+font-size: 100px;
+}
 bodY {
     margin: 0;
     padding: 0;

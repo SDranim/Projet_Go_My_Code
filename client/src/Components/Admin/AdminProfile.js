@@ -1,4 +1,5 @@
 import React from "react";
+import { Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import {useNavigate } from "react-router-dom";
 import { allmessages, allOffers, allSellers, allUsers } from "../../JS/Actions/AdminActions";
@@ -29,8 +30,8 @@ function AdminProfile() {
           <div className="row align-items-center flex-row-reverse">
             <div className="col-lg-6">
               <div className="about-text go-to">
-                <h3 className="dark-color">Admin</h3>
-                <h5 className="dark-color">welcome to your dashboard</h5>
+                <h3 id='h3-p' className="dark-color">Admin</h3>
+                <h5 id='h5-p' className="dark-color">welcome to your dashboard</h5>
               </div>
             </div>
             <div className="col-lg-6">
@@ -48,29 +49,28 @@ function AdminProfile() {
                 <div className="col-6 col-lg-3"></div>
                 <div className="count-data text-center"></div>
                 <div className="count-data text-center">
-                  <button onClick={handleMsgs} type="button" className="btn btn-outline-warning">
-                    Messages
-                  </button>
+                  <Button onClick={handleMsgs}  id="pBtn" variant="outline-light">
+                Clients Messages
+             </Button>
                 </div>
                 <div className="count-data text-center">
-                  
-                    <button onClick={handleSellers} type="button" className="btn btn-outline-warning">
-                      Sellers
-                    </button>
+                    <Button onClick={handleSellers} id="pBtn" variant="outline-light">
+                    Sellers
+             </Button>
       
                 </div>
                 <div className="count-data text-center">
                   
-                    <button onClick={handleUsers} type="button" className="btn btn-outline-warning">
-                      Users
-                    </button>
+                    <Button onClick={handleUsers} id="pBtn" variant="outline-light">
+                    Users
+             </Button>
+      
                  
                 </div>
                 <div className="count-data text-center">
-                  
-                    <button onClick={handleOffers} type="button" className="btn btn-outline-warning">
-                      Offers
-                    </button>
+                    <Button onClick={handleOffers} id="pBtn" variant="outline-light">
+                    Offers
+             </Button>
                  
                 </div>
               </div>

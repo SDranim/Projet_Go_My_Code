@@ -1,5 +1,6 @@
 import axios from "axios"
-import { ALL_OFFERS, ALL_SELLERS } from "../ActionTypes"
+import { ALL_OFFERS, ALL_SELLERS, FAIL } from "../ActionTypes"
+import { setAlert } from "./Allert"
 
 //get all offers 
 export const allOffers=()=>async(dispatch)=>{
@@ -31,6 +32,7 @@ export const sendMsg=(newMsg)=>async(dispatch)=>{
     try {
         await axios.post("/api/Guest/contactUs",newMsg)
     } catch (error) {
-        console.log(error)
+        dispatch({type:FAIL});
+        error.response.data.errors.forEach(error => dispatch(setAlert(error.msg)));
     }
 }

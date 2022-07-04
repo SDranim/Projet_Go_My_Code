@@ -1,4 +1,4 @@
-import { ALL_OFFERS, A_MSGS, A_OFFERS, A_SELLERS, A_USERS } from "../ActionTypes"
+import {  A_MSGS, A_OFFERS, A_SELLERS, A_USERS } from "../ActionTypes"
 import axios from "axios"
 //get msg
 export const allmessages=()=>async(dispatch)=>{

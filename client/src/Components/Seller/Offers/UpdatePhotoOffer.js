@@ -2,11 +2,10 @@ import axios from 'axios'
 import React, { useState } from 'react'
 import {Button} from "react-bootstrap"
 
-import { useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 function UpdatePhotoOffer() {
   const navigate=useNavigate()
   const {id}=useParams()
- 
   const [photo, setPhoto] = useState(null)
  const EditPhotoOffer=async()=>{
   const data= new FormData()
@@ -28,8 +27,11 @@ function UpdatePhotoOffer() {
 
   return (
     <div>
+        <Link to='/myOffers'>
+     <Button style={{backgroundColor:"#570A57"}} variant="outline-light">Back</Button>
+     </Link>
     <input type="file" onChange={(e)=>setPhoto(e.target.files[0])}/>
-    <Button onClick={EditPhotoOffer} variant="outline-dark">Submit</Button>
+    <Button onClick={EditPhotoOffer} style={{backgroundColor:"#570A57"}} variant="outline-light">Submit</Button>
     </div>
   )
 }

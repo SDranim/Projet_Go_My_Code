@@ -18,7 +18,7 @@ function MessagesCard({message}) {
       <h6>{message.email}</h6>
       <h6>{message.phone}</h6>
       <p className="message-content">{message.message}</p>
-      <Button onClick={handleDelete} variant="outline-danger">Delete</Button>
+      <Button onClick={handleDelete}  variant="outline-light">Delete</Button>
       
     </div>
   </div>

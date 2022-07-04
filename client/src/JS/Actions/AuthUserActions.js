@@ -1,5 +1,6 @@
 import axios from "axios";
 import { LOADING, FAIL, REGISTER, LOGIN, GET_CURRENT, LOGOUT } from "../ActionTypes";
+import { setAlert } from "./Allert";
 
 //register user
 export const registerUser = (newUser, navigate) => async (dispatch) => {
@@ -15,9 +16,12 @@ export const registerUser = (newUser, navigate) => async (dispatch) => {
       },
     });
     navigate("/profileUser");
-  } catch (error) {
-    dispatch({ type: FAIL, payload: error.response.data });
   }
+  catch (error) {
+    dispatch({type:FAIL});
+    error.response.data.errors.forEach(error => dispatch(setAlert(error.msg)));
+
+}
 };
 
 //login user
@@ -33,9 +37,10 @@ export const loginUser = (user, navigate) => async (dispatch) => {
         token: res.data.token,
       },
     });
-  } catch (error) {
-    dispatch({ type: FAIL, payload: error.response.data });
-  }
+  }  catch (error) {
+    dispatch({type:FAIL});
+    error.response.data.errors.forEach(error => dispatch(setAlert(error.msg)));
+}
 };
 //get_current
 export const getCurrentUser =()=>async(dispatch)=>{

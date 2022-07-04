@@ -1,11 +1,19 @@
 import React from 'react'
 import { Button } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { Link, useNavigate } from 'react-router-dom'
+import { getSellerprofile } from '../../JS/Actions/UserActions'
 
 function OffersCard({offer}) {
+const dispatch=useDispatch()
+const navigate=useNavigate()
+  const handleGetSeller=()=>{
+    dispatch(getSellerprofile(offer.sellerId._id))
+    navigate('/getprofileSeller')
+    }
   return (
     <div>
-    <div id="container">	
+    <div id="container-c">	
       <div className="product-details">
     <h1>{offer.title}</h1>
     <h6>{offer.category}</h6>
@@ -13,8 +21,11 @@ function OffersCard({offer}) {
 
         <div className="control">
           <Link to={`/offerDetails/${offer._id}`}>
-        <Button>Details</Button>
+          <Button style={{backgroundColor:"#F1BBD5",color:"#570A57"}} variant="outline-light">Details</Button>
+        
         </Link>
+     <Button onClick={handleGetSeller} style={{backgroundColor:"#570A57",marginLeft:"10px"}} variant="outline-light"> Go To Profile</Button>
+
         </div>
       </div>
       <div className="product-image">

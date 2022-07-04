@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import { updateProfilUser } from '../../JS/Actions/UserActions'
@@ -102,9 +103,9 @@ user && setBirthday(user.birthday)
               <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div className="text-right">
                   <Link to='/profileUser'>
-                  <button type="button" id="submit" name="submit" className="btn btn-secondary">Cancel</button>
-                  </Link>
-                  <button type="button" id="submit" name="submit" className="btn btn-primary" onClick={handleUpdate}>Update</button>
+                <Button style={{backgroundColor:"#570A57"}} variant="outline-light">Cancel</Button>
+                </Link>
+                <Button style={{backgroundColor:"#D5A4CF"}} variant="outline-light" onClick={handleUpdate}>Update</Button>
                 </div>
               </div>
             </div>

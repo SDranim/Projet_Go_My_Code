@@ -17,14 +17,15 @@ function ASellerCard({seller}) {
      <div className="img-container">
        <div className="img-inner">
          <div className="inner-skew">
-           <img src="" alt="" />
+           <img src={`Image/${seller.photo}`} alt="" />
          </div>
        </div>
      </div>
      <div className="text-container">
        <h3>{seller?.name}</h3>
        <div>
-       <Button onClick={handledelete} variant="outline-danger">Delete seller</Button>
+      <Button onClick={handledelete} style={{backgroundColor:" #C9BBCF",color: "#46244C"}}  variant="outline-light">Delete seller</Button>
+
        </div>
      </div>
    </div>

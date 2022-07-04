@@ -3,32 +3,46 @@ import { Button } from 'react-bootstrap'
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom'
 import { deleteOffer } from '../../../JS/Actions/SellerActions';
+import { confirmAlert } from 'react-confirm-alert'
+import 'react-confirm-alert/src/react-confirm-alert.css'; 
 
 function OfferCard({e}) {
   const dispatch=useDispatch()
   const navigate=useNavigate()
   const handleDeleteOffer = () => {
-    if (window.confirm("Are you sure you want to delete this offer")) {
-      dispatch(deleteOffer(e._id));
-      navigate("/myOffers");
-    }
+    confirmAlert({
+      title: 'Confirm to delete offer',
+      message: 'Are you sure to do this.',
+      buttons: [
+        {
+          label: 'Yes',
+          onClick: ()=> {dispatch(deleteOffer(e._id));navigate("/myOffers")}
+        },
+        {
+          label: 'No',
+          onClick: () => navigate("/myOffers")
+        }
+      ]
+    });
   };
 
   return (
   <div>
-      <div id="container">	
+
+      <div id="container-c">	
         <div className="product-details">
       <h1>{e.title}</h1> 
       <h6>{e.category}</h6>
           <p className="information">{e.description}</p>
           <div className="control">
           <Link to={`/updateOffer/${e._id}`}>
-          <Button variant="outline-warning">Update</Button>
+          <Button style={{backgroundColor:"#570A57"}} variant="outline-light">Update</Button>
           </Link>
           <Link to={`/changeOfferImage/${e._id}`}>
-          <Button variant="outline-warning">Update Image</Button>
+          <Button style={{backgroundColor:"#570A57"}} variant="outline-light">Update Image</Button>
           </Link>
-          <Button onClick={handleDeleteOffer} variant="outline-danger">Delete</Button>
+          <Button onClick={handleDeleteOffer} style={{backgroundColor:"#F1BBD5"}} variant="outline-light">Delete</Button>
+
           
           </div>
         </div>

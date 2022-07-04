@@ -1,37 +1,25 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
-* {
-  box-sizing: border-box;
-}
-/* body {
+
+.container-ss {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0;
-  background-color: #f7f8fc;
-  font-family: "Roboto", sans-serif;
-  color: #10182f;
-} */
-.container {
-  display: flex;
-  width: 1040px;
   justify-content: space-evenly;
   flex-wrap: wrap;
+
 }
-.card {
+.card-ss {
   margin: 10px;
-  background-color: #fff;
+  background-color: #E9D5CA;
   border-radius: 10px;
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
   overflow: hidden;
-  width: 700px;
-  height: 700px;
+  width: 750px;
+  height: 350px;
 }
-.card-header img {
+.card-header-ss img {
   width: 100%;
   height: 350px;
   object-fit: cover;
 }
-.card-body {
+.card-body-ss {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -54,7 +42,7 @@
   background-color: #47bcd4;
 }
 .tag-purple {
-  background-color: #5e76bf;
+  background-color: #691A40;
 }
 .tag-pink {
   background-color: #cd5b9f;
@@ -79,5 +67,8 @@
   margin: 0;
 }
 .user-info small {
-  color: #545d7a;
+  color: #E9D5CA;
+}
+h4{
+  font-family: "Dancing Script";
 }

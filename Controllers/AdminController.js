@@ -1,6 +1,7 @@
 const sellers = require("../Models/SellerSchema");
 const users = require("../Models/UserSchema");
 const contacts = require("../Models/GuestContactSchema");
+const offers = require("../Models/OfferSchema")
 
 //get users
 //API /allUsers
@@ -38,8 +39,10 @@ exports.getSellers = async (req, res) => {
 //delete seller
 //API /deleteSeller/:id
 exports.deleteSeller = async (req, res) => {
-  try {
+  try { 
     await sellers.findByIdAndDelete(req.params.id);
+    await offers.deleteMany({sellerId:req.params.id});
+
     res.status(200).send({msg: "Seller account deleted"});
   } catch (error) {
     res.status(500).send({msg: "Could not delete seller"});

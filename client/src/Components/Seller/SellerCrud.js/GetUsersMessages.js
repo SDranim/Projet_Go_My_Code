@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react'
+import { Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { allUsersmessages } from '../../../JS/Actions/UserActions'
 import UsersMessagesCard from './UsersMessagesCard'
 function GetUsersMessages() {
@@ -11,19 +13,22 @@ function GetUsersMessages() {
     },[dispatch])
   return (
   
-    <div className='offerlist'>
+    <div classNam='offerlist'>
+        <Link to='/profileSeller'>
+     <Button style={{backgroundColor:"#570A57"}} variant="outline-light">Back</Button>
+     </Link>
     {load?   
-     <div class="center">
-     <div class="wave"></div>
-     <div class="wave"></div>
-     <div class="wave"></div>
-     <div class="wave"></div>
-     <div class="wave"></div>
-     <div class="wave"></div>
-     <div class="wave"></div>
-     <div class="wave"></div>
-     <div class="wave"></div>
-     <div class="wave"></div>
+     <div className="center">
+     <div className="wave"></div>
+     <div className="wave"></div>
+     <div className="wave"></div>
+     <div className="wave"></div>
+     <div className="wave"></div>
+     <div className="wave"></div>
+     <div className="wave"></div>
+     <div className="wave"></div>
+     <div className="wave"></div>
+     <div className="wave"></div>
    </div>
    :messages.map((message,i)=>(< UsersMessagesCard message={message} key={i}/>))
     }

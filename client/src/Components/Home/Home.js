@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import {useDispatch, useSelector} from "react-redux"
 import { Link } from 'react-router-dom'
 import { FindOffer } from '../../JS/Actions/UserActions'
-import Found from './Found'
-import {AiOutlineFacebook, AiOutlineInstagram, AiOutlineLinkedin, AiOutlineYoutube }from 'react-icons/ai'
+import {AiOutlineFacebook, AiOutlineInstagram }from 'react-icons/ai'
 import {FiTwitter} from 'react-icons/fi'
+import OffersCard from '../Guest/OffersCard'
 function Home() {
 const offers=useSelector((state)=>state.OfferReducer.offers)
 const [search , setSearch] = useState("")
@@ -26,7 +26,7 @@ const findOffers =(e)=>{
           </form>
           </div>      
           <div className='Found'> {
-            offers.map((offer,i)=>(< Found  offer={offer} key={i} /> ))
+            offers.map((offer,i)=>(< OffersCard offer={offer} key={i} /> ))
           }
           </div>
     </div>

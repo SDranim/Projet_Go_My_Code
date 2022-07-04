@@ -4,19 +4,32 @@
     width: 400px;
     padding: 10px;
 } */
+.message-blue h6{
+background-color: #C9BBCF;
+}
+.message-blue p{
+background-color: #AC7D88;
+}
 
+.message-blue Button{
+margin-top: 10px;
+margin-left: 300px;
+background-color: #C9BBCF;
+color: #46244C;
+}
 .message-blue {
     position: relative;
     margin-left: 20px;
     margin-bottom: 10px;
     padding: 10px;
-    background-color: #A8DDFD;
+    background-color: #FFFFDE;
     width: 400px;
     height: 200px;
     text-align: left;
     font: 400 .9em 'Open Sans', sans-serif;
-    border: 1px solid #97C6E3;
+    border: 1px solid #827397;
     border-radius: 10px;
+    margin-top: 15px;
 }
 
 /* .message-orange {
@@ -43,6 +56,7 @@
     font-size: .85em;
     font-weight: 300;
     bottom: 5px;
+
     right: 5px;
 }
 
@@ -59,7 +73,7 @@
     position: absolute;
     width: 0;
     height: 0;
-    border-top: 15px solid #A8DDFD;
+    border-top: 15px solid #827397;
     border-left: 15px solid transparent;
     border-right: 15px solid transparent;
     top: 0;
@@ -71,7 +85,7 @@
     position: absolute;
     width: 0;
     height: 0;
-    border-top: 17px solid #97C6E3;
+    border-top: 17px solid #827397;
     border-left: 16px solid transparent;
     border-right: 16px solid transparent;
     top: -1px;

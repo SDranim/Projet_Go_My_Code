@@ -1,18 +1,32 @@
 import React from 'react'
+import { Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
+import { confirmAlert } from 'react-confirm-alert'
+import 'react-confirm-alert/src/react-confirm-alert.css'; 
 import { deleteAccountSeller, myOffers } from '../../../JS/Actions/SellerActions';
 import { allUsersmessages } from '../../../JS/Actions/UserActions';
 function ProfileSeller() {
   const user = useSelector((state) => state.authReducer.user);
   const dispatch=useDispatch()
   const navigate=useNavigate()
+  
   const handleDelete = () => {
-    if (window.confirm("Are you sure")) {
-      dispatch(deleteAccountSeller());
-      navigate("/signUp");
+      confirmAlert({
+        title: 'Confirm to delete your account',
+        message: 'Are you sure to do this.',
+        buttons: [
+          {
+            label: 'Yes',
+            onClick: ()=> {dispatch(deleteAccountSeller());navigate('/signUp')}
+          },
+          {
+            label: 'No',
+            onClick: () => navigate('/profileSeller')
+          }
+        ]
+      });
     }
-  };
   const handleMsgs=()=>{
     dispatch(allUsersmessages())
     navigate('/userMsgs')
@@ -24,9 +38,9 @@ function ProfileSeller() {
           <div className="row align-items-center flex-row-reverse">
             <div className="col-lg-6">
               <div className="about-text go-to">
-              <h3 className="dark-color">{user?.name}</h3>
-              <h6 className="theme-color lead">{user?.slogan}</h6>
-                <h5 className="dark-color">About Us</h5>
+              <h3 id='h3-p' className="dark-color">{user?.name}</h3>
+              <h6 id='h6-p'className="theme-color lead">{user?.slogan}</h6>
+                <h5 id='h5-p' className="dark-color">About Us</h5>
                 <p>{user?.discription}</p>
                 <div className="row about-list">
                   <div className="col-md-6">
@@ -58,50 +72,50 @@ function ProfileSeller() {
           </div>
           <div className="counter">
           <div className="row">
-              <div className="flex">
+              <div className='flex'>
               <div className="col-6 col-lg-3"></div>
               <div className="count-data text-center">
-                <button onClick={()=>{dispatch(myOffers());navigate('/myOffers')}}  className="btn btn-outline-warning">
-                  My Offers
-                </button>
+                <Button onClick={handleMsgs}  id="pBtn" variant="outline-light">
+                Clients Messages
+             </Button>
               </div>
               <div className="count-data text-center">
-                <button onClick={handleMsgs}  type="button" className="btn btn-outline-warning">
-                  Messages
-                </button>
+                <Button onClick={()=>{dispatch(myOffers());navigate('/myOffers')}}  id="pBtn" variant="outline-light">
+                  My Offers
+             </Button>
               </div>
               <div className="count-data text-center">
                 <Link to="/addOffer">
-                <button type="button" className="btn btn-outline-warning">
-                  Add Offer
-                </button>
+                <Button id="pBtn" variant="outline-light">
+                Add Offer
+             </Button>
                 </Link>
               </div>
               <div className="count-data text-center">
               <Link to="/sellerUpdate">
-                <button type="button" className="btn btn-outline-warning">
-                  Edit Profile
-                </button>
+                <Button id="pBtn" variant="outline-light">
+                Edit Profile
+             </Button>
                 </Link>
               </div>
               <div className="count-data text-center">
               <Link to="/editPhotoSeller">
-                <button type="button" className="btn btn-outline-warning">
-                  Change Photo
-                </button>
+                <Button id="pBtn" variant="outline-light">
+                Change Photo
+             </Button>
                 </Link>
               </div>
               <div className="count-data text-center">
               <Link to="/editPasswordSeller">
-                <button type="button" className="btn btn-outline-warning">
-                  Change password
-                </button>
+                <Button id="pBtn" variant="outline-light">
+                Change password
+             </Button>
                 </Link>
               </div>
               <div className="count-data text-center">
-                <button onClick={handleDelete} type="button" className="btn btn-outline-warning">
-                  Delete Profile
-                </button>
+                <Button  onClick={handleDelete} id="pBtn" variant="outline-light">
+                Delete Profile
+             </Button>
               </div>
               </div>
             </div>

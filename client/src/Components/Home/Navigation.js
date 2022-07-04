@@ -37,6 +37,8 @@ function Navigation() {
             {auth ? (
               <>
                 <Nav.Link
+                 id="color_i"
+                 style={{marginLeft: "700px"}}
                   as={Link}
                   to={
                     user.role === "seller"
@@ -49,7 +51,8 @@ function Navigation() {
                   Profile
                 </Nav.Link>
                 <Button
-                  variant="outline-dark"
+                variant="light"
+                 id="nav_btn"
                   onClick={() => {
                     dispatch(logout(), navigate("/SignIn"));
                   }}

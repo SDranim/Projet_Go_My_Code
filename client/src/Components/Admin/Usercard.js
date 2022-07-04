@@ -16,14 +16,16 @@ function UserCard({user}) {
      <div className="img-container">
        <div className="img-inner">
          <div className="inner-skew">
-           <img src="" alt="" />
+           <img src={`Image/${user.photo}`} alt="" />
          </div>
        </div>
      </div>
      <div className="text-container">
        <h3>{user?.first_name}</h3>
        <div>
-       <Button onClick={handledelete} variant="outline-danger">Delete User</Button>
+     
+      <Button onClick={handledelete} style={{backgroundColor:" #C9BBCF",color: "#46244C"}}  variant="outline-light">Delete User</Button>
+
        </div>
      </div>
    </div>

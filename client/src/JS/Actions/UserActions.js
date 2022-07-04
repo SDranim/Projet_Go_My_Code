@@ -1,5 +1,6 @@
 import axios from "axios";
 import {FAIL, FIND_OFFER, GETU_MSGS, GET_SELLER, SELLER_OFFERS} from "../ActionTypes";
+import { setAlert } from "./Allert";
 import {getCurrentUser, logout} from "./AuthUserActions";
 //update profile
 export const updateProfilUser = (user) => async (dispatch) => {
@@ -44,7 +45,8 @@ export const editPasswordUser = (updatedPass) => async (dispatch) => {
     await axios.put("/api/User/updatePasswordUser", updatedPass, config);
     dispatch(logout());
   } catch (error) {
-    dispatch({type: FAIL});
+    dispatch({type:FAIL});
+    error.response.data.errors.forEach(error => dispatch(setAlert(error.msg)));
   }
 };
 
@@ -88,7 +90,8 @@ export const sendMsgSeller = (newContactS, id) => async (dispatch) => {
   try {
     await axios.post(`/api/User/contactSeller/${id}`, newContactS, config);
   } catch (error) {
-    console.log(error);
+    dispatch({type:FAIL});
+    error.response.data.errors.forEach(error => dispatch(setAlert(error.msg)));
   }
 };
 

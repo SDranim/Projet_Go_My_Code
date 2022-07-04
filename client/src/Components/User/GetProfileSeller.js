@@ -1,3 +1,4 @@
+import { Button } from 'react-bootstrap';
 import {useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { getSellerOffers } from '../../JS/Actions/UserActions';
@@ -13,15 +14,19 @@ dispatch(getSellerOffers(seller._id))
 navigate('/allOffers')
 }
   return (
-    <div>
+    <div>  
+    <Link to='/SellersList'>
+    <Button style={{backgroundColor:"#570A57"}} variant="outline-light">Back</Button>
+    </Link>
+
     <section className="section about-section gray-bg" id="about">
     <div className="container">
       <div className="row align-items-center flex-row-reverse">
         <div className="col-lg-6">
           <div className="about-text go-to">
-          <h3 className="dark-color">{seller?.name}</h3>
-          <h6 className="theme-color lead">{seller?.slogan}</h6>
-            <h5 className="dark-color">About Us</h5>
+          <h3 id='h3-p' className="dark-color">{seller?.name}</h3>
+          <h6 id='h6-p' className="theme-color lead">{seller?.slogan}</h6>
+            <h5  id='h5-p' className="dark-color">About Us</h5>
             <p>{seller?.discription}</p>
             <div className="row about-list">
               <div className="col-md-6">
@@ -56,16 +61,16 @@ navigate('/allOffers')
           <div className="flex">
           <div className="col-6 col-lg-3"></div>
           <div className="count-data text-center">
-            <button onClick={handleoffers} className="btn btn-outline-warning">
-              All Offers
-            </button>
+            <Button onClick={handleoffers}   id="pBtn" variant="outline-light">
+            All Offers
+             </Button>
           </div>
           <div className="col-6 col-lg-3"></div>
           <div className="count-data text-center">
             <Link to={`/contactSeller/${seller?._id}`}>
-            <button  className="btn btn-outline-warning">
-              contact Us
-            </button>
+            <Button id="pBtn" variant="outline-light">
+            Contact Us
+             </Button>
             </Link>
           </div>
           </div>
