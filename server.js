@@ -17,13 +17,11 @@ app.use("/api/User", UserMRouter);
 app.use("/api/Seller", SellerMRouter);
 app.use("/api/Admin", AdminRouter);
 app.use("/api/Guest", guestRouter);
-
+//deploy
 if (process.env.NODE_ENV==='production'){
 app.use(express.static('client/build'));
 app.get('*',(req,res)=>{
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
-}
-)
-}
+})}
 
 app.listen(port, console.log(`server is up and running on localhost:${port}`));
