@@ -6,7 +6,6 @@ const UserMRouter = require("./Routes/UserMRouter");
 const SellerMRouter = require("./Routes/SellerMRouter");
 const AdminRouter = require("./Routes/AdminRouter");
 const guestRouter = require("./Routes/GuestRouter");
-const path = require ("path")
 
 const app = express();
 const port = process.env.port || 5000;
